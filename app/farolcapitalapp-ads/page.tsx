@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function AppAdsTxt() {
   const adsContent = `# app-ads.txt for Farol Capital
 # Generated for Google AdMob integration
@@ -30,15 +32,12 @@ google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
         <div className="bg-black rounded-lg p-6 border border-green-500/50">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xl font-bold text-white tracking-wide">CONTEÚDO DO ARQUIVO</h3>
-            <button
-              onClick={() => {
-                navigator.clipboard.writeText(adsContent);
-                alert('Conteúdo copiado para a área de transferência!');
-              }}
+            <Link
+              href="/app-ads.txt"
               className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded font-semibold text-sm transition-colors"
             >
-              COPIAR
-            </button>
+              BAIXAR
+            </Link>
           </div>
           <pre className="text-green-400 font-mono text-sm overflow-x-auto whitespace-pre-wrap">
             {adsContent}

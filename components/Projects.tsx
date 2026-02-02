@@ -17,7 +17,7 @@ export default function Projects() {
             <div className="flex items-start gap-4 mb-6">
               <div className="relative w-16 h-16">
                 <Image
-                  src="/images/icone-farol capital.png"
+                  src="/images/icone-farol-capital.png"
                   alt="Farol Capital"
                   fill
                   className="object-contain"
@@ -47,7 +47,7 @@ export default function Projects() {
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
               <div className="relative aspect-[9/16] rounded-lg overflow-hidden">
                 <Image
-                  src="/images/tela-farol capital (1).jpeg"
+                  src="/images/tela-farol-capital-1.jpeg"
                   alt="Tela 1 - Farol Capital"
                   fill
                   className="object-cover"
@@ -55,7 +55,7 @@ export default function Projects() {
               </div>
               <div className="relative aspect-[9/16] rounded-lg overflow-hidden">
                 <Image
-                  src="/images/tela-farol capital (2).jpeg"
+                  src="/images/tela-farol-capital-2.jpeg"
                   alt="Tela 2 - Farol Capital"
                   fill
                   className="object-cover"
@@ -63,7 +63,7 @@ export default function Projects() {
               </div>
               <div className="relative aspect-[9/16] rounded-lg overflow-hidden">
                 <Image
-                  src="/images/tela-farol capital (3).jpeg"
+                  src="/images/tela-farol-capital-3.jpeg"
                   alt="Tela 3 - Farol Capital"
                   fill
                   className="object-cover"
@@ -71,7 +71,7 @@ export default function Projects() {
               </div>
               <div className="relative aspect-[9/16] rounded-lg overflow-hidden">
                 <Image
-                  src="/images/tela-farol capital (4).jpeg"
+                  src="/images/tela-farol-capital-4.jpeg"
                   alt="Tela 4 - Farol Capital"
                   fill
                   className="object-cover"
@@ -79,7 +79,7 @@ export default function Projects() {
               </div>
               <div className="relative aspect-[9/16] rounded-lg overflow-hidden">
                 <Image
-                  src="/images/tela-farol capital (5).jpeg"
+                  src="/images/tela-farol-capital-5.jpeg"
                   alt="Tela 5 - Farol Capital"
                   fill
                   className="object-cover"

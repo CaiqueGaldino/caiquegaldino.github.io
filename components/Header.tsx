@@ -22,7 +22,7 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <div className="relative w-10 h-10">
               <Image
-                src="/images/icone-kurupira (1).webp"
+                src="/images/icone-kurupira-1.webp"
                 alt="Kurupira Labs"
                 fill
                 className="object-contain"

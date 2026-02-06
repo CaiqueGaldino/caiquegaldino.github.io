@@ -1,8 +1,27 @@
-# app-ads.txt for Farol Capital
-# Generated for Google AdMob integration
-# Last updated: February 2, 2026
+# app-ads.txt — sample file for mobile apps
+# Place this file at the root of your developer website, e.g.:
+# https://your-developer-domain.com/app-ads.txt
+#
+# Format per line: <ad-system-domain>, <publisher-id>, <DIRECT|RESELLER>, <cert-authority-id (optional)>
+# Example lines are shown below — replace the placeholder publisher IDs with your real IDs.
 
-google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+# Google AdMob
+google.com, pub-6856593699550675, DIRECT, f08c47fec0942fa0
 
-# Replace pub-0000000000000000 with your actual AdMob Publisher ID
-# You can find your Publisher ID in your AdMob account settings
+# AppLovin (MAX) example (publisher id placeholder):
+applovin.com, 0000000000, RESELLER
+
+# Unity Ads example (publisher id placeholder):
+unity.com, 1234567890, DIRECT
+
+# ironSource example (publisher id placeholder):
+ironsrc.com, 987654321, RESELLER
+
+# Example for a generic ad-network (replace fields accordingly):
+example-adnetwork.com, YOUR_PUBLISHER_ID, DIRECT
+
+# Notes:
+# - Use DIRECT when you sell your own inventory directly to the ad system.
+# - Use RESELLER for intermediaries who are authorized to resell your inventory.
+# - certification authority ID is optional but recommended when the ad-network provides one.
+# - Keep this file up-to-date whenever you add/remove partners.

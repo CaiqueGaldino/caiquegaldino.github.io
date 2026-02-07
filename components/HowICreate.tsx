@@ -28,7 +28,7 @@ const principles = [
 
 export default function HowICreate() {
   return (
-    <section id="how-i-create" className="py-32 px-4 md:px-8 bg-black min-h-screen flex flex-col justify-center">
+    <section id="how-i-create" className="py-32 px-4 md:px-8 min-h-screen flex flex-col justify-center">
       <div className="container mx-auto max-w-6xl">
         <ScrollFloat className="text-5xl md:text-7xl font-bold text-center mb-20 text-white tracking-wider">
           COMO EU CRIO
@@ -40,7 +40,7 @@ export default function HowICreate() {
             return (
               <div
                 key={index}
-                className="group bg-zinc-950 border border-gray-800 rounded-2xl p-10 hover:border-red-900/50 transition-all hover:scale-[1.02] hover:bg-zinc-900/50"
+                className="group bg-black/30 backdrop-blur-sm border border-gray-800 rounded-2xl p-10 hover:border-red-900/50 transition-all hover:scale-[1.02] hover:bg-black/40"
               >
                 <Icon className="w-12 h-12 text-gray-400 mb-6 mx-auto group-hover:text-red-500 transition-colors" strokeWidth={1.5} />
                 <p className="text-lg text-gray-300 text-center">

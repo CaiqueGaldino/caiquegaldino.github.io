@@ -4,7 +4,7 @@ import ScrollFloat from './ui/ScrollFloat';
 
 export default function WhatAppearsHere() {
   return (
-    <section id="what-appears" className="py-32 px-4 md:px-8 bg-zinc-950">
+    <section id="what-appears" className="py-32 px-4 md:px-8">
       <div className="container mx-auto max-w-5xl text-center">
         <ScrollFloat className="text-5xl md:text-7xl font-bold mb-20 text-white tracking-wider">
           O QUE APARECE AQUI

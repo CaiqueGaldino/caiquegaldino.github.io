@@ -4,7 +4,7 @@ import ScrollFloat from './ui/ScrollFloat';
 
 export default function WhatMovesMe() {
   return (
-    <section id="what-moves" className="py-32 px-4 md:px-8 bg-black min-h-screen flex flex-col justify-center">
+    <section id="what-moves" className="py-32 px-4 md:px-8 min-h-screen flex flex-col justify-center">
       <div className="container mx-auto max-w-5xl text-center">
         <ScrollFloat className="text-5xl md:text-7xl font-bold mb-20 text-white tracking-wider">
           O QUE ME MOVE

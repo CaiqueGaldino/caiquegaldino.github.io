@@ -4,11 +4,17 @@ import { getAssetPath } from '@/lib/assetPrefix';
 
 export default function FarolCapital() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-gray-200">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-green-900/10 via-transparent to-transparent"></div>
-        <div className="container mx-auto px-4 py-20 text-center relative z-10">
+    <div className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-gray-200 relative overflow-hidden">
+      {/* Background Effect */}
+      <div className="absolute inset-0 bg-gradient-to-b from-green-900/10 via-transparent to-green-900/5 pointer-events-none"></div>
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-green-500/5 rounded-full blur-3xl pointer-events-none"></div>
+      
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Hero Section */}
+        <div className="relative overflow-hidden">
+          <div className="container mx-auto px-4 py-20 text-center relative z-10">
           <div className="flex justify-center mb-8">
             <div className="relative">
               <div className="absolute inset-0 bg-green-500/20 blur-3xl rounded-full"></div>
@@ -219,6 +225,7 @@ export default function FarolCapital() {
           <p className="text-gray-500">Desenvolvido por <span className="text-green-400 font-semibold">Kurupira Labs</span></p>
           <p className="text-gray-600 mt-2 text-sm">© {new Date().getFullYear()} Todos os direitos reservados.</p>
         </div>
+      </div>
       </div>
     </div>
   );

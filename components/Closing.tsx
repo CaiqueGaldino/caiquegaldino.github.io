@@ -2,7 +2,7 @@
 
 export default function Closing() {
   return (
-    <section id="closing" className="py-32 px-4 md:px-8 bg-zinc-950 min-h-screen flex flex-col justify-center">
+    <section id="closing" className="py-32 px-4 md:px-8 min-h-screen flex flex-col justify-center">
       <div className="container mx-auto max-w-4xl text-center space-y-20">
         <p className="text-3xl md:text-4xl text-gray-300 leading-relaxed font-light">
           A Kurupira Labs não é sobre chegar rápido.

@@ -521,7 +521,7 @@ export default function Projects() {
   const rightImage = phoneImages[rightImageIndex];
 
   return (
-    <section id="projects" className="py-20 px-4 md:px-8 bg-black min-h-screen flex flex-col justify-center bento-section">
+    <section id="projects" className="py-20 px-4 md:px-8 min-h-screen flex flex-col justify-center bento-section">
       <GlobalSpotlight
         gridRef={gridRef}
         disableAnimations={isMobile}
@@ -592,7 +592,7 @@ export default function Projects() {
 
             {/* Card 3: Texto do App - cresce para preencher o resto */}
             <ParticleCard
-              className="magic-bento-card magic-bento-card--border-glow bg-zinc-900 rounded-2xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.7)] flex flex-col justify-between flex-1 min-h-96"
+              className="magic-bento-card magic-bento-card--border-glow bg-black/40 backdrop-blur-sm rounded-2xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.7)] flex flex-col justify-between flex-1 min-h-96"
               style={{ '--glow-color': DEFAULT_GLOW_COLOR } as React.CSSProperties}
               disableAnimations={isMobile}
               particleCount={12}
@@ -635,7 +635,7 @@ export default function Projects() {
           {/* Lado Direito - 2 Frames de Telefone */}
           <div className="grid grid-cols-2 gap-6 items-center">
             <ParticleCard
-              className="magic-bento-card magic-bento-card--border-glow relative aspect-[9/19.5] rounded-[2.5rem] overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.8)] bg-black p-3 h-full"
+              className="magic-bento-card magic-bento-card--border-glow relative aspect-[9/19.5] rounded-[2.5rem] overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.8)] bg-black/60 backdrop-blur-sm p-3 h-full"
               style={{ '--glow-color': DEFAULT_GLOW_COLOR } as React.CSSProperties}
               disableAnimations={isMobile}
               particleCount={8}
@@ -657,7 +657,7 @@ export default function Projects() {
             </ParticleCard>
             
             <ParticleCard
-              className="magic-bento-card magic-bento-card--border-glow relative aspect-[9/19.5] rounded-[2.5rem] overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.8)] bg-black p-3 h-full"
+              className="magic-bento-card magic-bento-card--border-glow relative aspect-[9/19.5] rounded-[2.5rem] overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.8)] bg-black/60 backdrop-blur-sm p-3 h-full"
               style={{ '--glow-color': DEFAULT_GLOW_COLOR } as React.CSSProperties}
               disableAnimations={isMobile}
               particleCount={8}

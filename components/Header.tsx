@@ -1,94 +1,109 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { getAssetPath } from '@/lib/assetPrefix';
 
-export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const links = [
+  { label: 'Projetos', id: 'projects' },
+  { label: 'Sobre',    id: 'about-labs' },
+];
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
+export default function Header() {
+  const [open, setOpen]       = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', fn);
+    return () => window.removeEventListener('scroll', fn);
+  }, []);
+
+  const go = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setOpen(false);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-red-500/30">
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="relative w-10 h-10">
-              <Image
-                src={getAssetPath('/images/icone-kurupira-1.webp')}
-                alt="Kurupira Labs"
-                fill
-                className="object-contain"
-              />
-            </div>
-            <div className="text-2xl font-bold bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent tracking-wider">
-              KURUPIRA LABS
-            </div>
+    <header
+      style={{
+        position: 'fixed',
+        top: 0, left: 0, right: 0,
+        zIndex: 50,
+        transition: 'background 0.4s, border-color 0.4s',
+        background: scrolled ? 'rgba(8,8,8,0.85)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(16px)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
+      }}
+    >
+      <nav style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        {/* Logo */}
+        <button onClick={() => go('home')} style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'none', border: 'none', cursor: 'pointer' }}>
+          <div style={{ position: 'relative', width: '28px', height: '28px' }}>
+            <Image src={getAssetPath('/images/icone-kurupira-1.webp')} alt="Kurupira Labs" fill style={{ objectFit: 'contain' }} />
           </div>
+          <span style={{ fontFamily: 'var(--font-bebas)', fontSize: '18px', letterSpacing: '0.12em', color: '#f5f5f5' }}>
+            KURUPIRA LABS
+          </span>
+        </button>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
+        {/* Desktop links */}
+        <div style={{ display: 'flex', gap: '40px' }} className="hidden-mobile">
+          {links.map(({ label, id }) => (
             <button
-              onClick={() => scrollToSection('home')}
-              className="text-gray-300 hover:text-red-500 transition-colors font-semibold tracking-wide"
+              key={id}
+              onClick={() => go(id)}
+              style={{
+                background: 'none', border: 'none', cursor: 'pointer',
+                fontSize: '13px', letterSpacing: '0.1em', fontWeight: 500,
+                color: 'rgba(245,245,245,0.55)',
+                transition: 'color 0.2s',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#f97316')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(245,245,245,0.55)')}
             >
-              INÍCIO
+              {label.toUpperCase()}
             </button>
-            <button
-              onClick={() => scrollToSection('projects')}
-              className="text-gray-300 hover:text-red-500 transition-colors font-semibold tracking-wide"
-            >
-              PROJETOS
-            </button>
-            <button
-              onClick={() => scrollToSection('about')}
-              className="text-gray-300 hover:text-red-500 transition-colors font-semibold tracking-wide"
-            >
-              SOBRE
-            </button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-gray-300"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          ))}
         </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-4">
-            <button
-              onClick={() => scrollToSection('home')}
-              className="block text-gray-300 hover:text-red-500 transition-colors font-semibold tracking-wide"
-            >
-              INÍCIO
-            </button>
-            <button
-              onClick={() => scrollToSection('projects')}
-              className="block text-gray-300 hover:text-red-500 transition-colors font-semibold tracking-wide"
-            >
-              PROJETOS
-            </button>
-            <button
-              onClick={() => scrollToSection('about')}
-              className="block text-gray-300 hover:text-red-500 transition-colors font-semibold tracking-wide"
-            >
-              SOBRE
-            </button>
-          </div>
-        )}
+        {/* Mobile toggle */}
+        <button
+          onClick={() => setOpen(!open)}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#f5f5f5', display: 'none' }}
+          className="show-mobile"
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </nav>
+
+      {/* Mobile menu */}
+      {open && (
+        <div style={{ background: 'rgba(8,8,8,0.97)', borderTop: '1px solid rgba(255,255,255,0.06)', padding: '20px 32px 24px' }}>
+          {links.map(({ label, id }) => (
+            <button
+              key={id}
+              onClick={() => go(id)}
+              style={{
+                display: 'block', width: '100%', textAlign: 'left',
+                background: 'none', border: 'none', cursor: 'pointer',
+                fontSize: '14px', letterSpacing: '0.1em', fontWeight: 500,
+                color: 'rgba(245,245,245,0.6)', padding: '10px 0',
+              }}
+            >
+              {label.toUpperCase()}
+            </button>
+          ))}
+        </div>
+      )}
+
+      <style>{`
+        @media (max-width: 640px) {
+          .hidden-mobile { display: none !important; }
+          .show-mobile   { display: block !important; }
+        }
+      `}</style>
     </header>
   );
 }

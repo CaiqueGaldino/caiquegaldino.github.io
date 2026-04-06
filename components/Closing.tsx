@@ -2,24 +2,58 @@
 
 export default function Closing() {
   return (
-    <section id="closing" className="py-32 px-4 md:px-8 min-h-screen flex flex-col justify-center">
-      <div className="container mx-auto max-w-4xl text-center space-y-20">
-        <p className="text-3xl md:text-4xl text-gray-300 leading-relaxed font-light">
-          A Kurupira Labs não é sobre chegar rápido.
-          <br />
-          É sobre ir com intenção.
-        </p>
+    <section
+      id="closing"
+      style={{
+        padding: '160px 32px 120px',
+        textAlign: 'center',
+        borderTop: '1px solid rgba(255,255,255,0.06)',
+        position: 'relative',
+      }}
+    >
+      {/* Thin fire line center-top */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '-1px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '200px',
+          height: '1px',
+          background: 'linear-gradient(90deg, transparent, #f97316, transparent)',
+        }}
+      />
 
-        <div className="pt-12 border-t border-gray-800">
-          <h2 className="text-6xl md:text-8xl font-bold bg-linear-to-r from-red-400 via-red-600 to-red-400 bg-clip-text text-transparent mb-8">
-            Kurupira Labs
-          </h2>
-          <div className="space-y-4">
-            <p className="text-xl md:text-2xl text-gray-400 font-light">Criar por curiosidade</p>
-            <p className="text-xl md:text-2xl text-gray-400 font-light">Construir por prazer</p>
-          </div>
-        </div>
+      <p
+        style={{
+          fontSize: 'clamp(13px, 1.4vw, 15px)',
+          letterSpacing: '0.15em',
+          color: 'rgba(245,245,245,0.2)',
+          marginBottom: '28px',
+        }}
+      >
+        A KURUPIRA LABS NÃO É SOBRE CHEGAR RÁPIDO.<br />
+        É SOBRE IR COM INTENÇÃO.
+      </p>
+
+      <div
+        style={{
+          fontFamily: 'var(--font-bebas)',
+          fontSize: 'clamp(56px, 9vw, 120px)',
+          lineHeight: 0.9,
+          background: 'linear-gradient(120deg, #fbbf24 0%, #f97316 50%, #dc2626 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          marginBottom: '32px',
+        }}
+      >
+        Kurupira Labs
       </div>
+
+      <p style={{ fontSize: '13px', color: 'rgba(245,245,245,0.2)', letterSpacing: '0.1em' }}>
+        Criar por curiosidade · Construir por prazer
+      </p>
     </section>
   );
 }

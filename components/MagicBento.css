@@ -2,12 +2,12 @@
   --hue: 27;
   --sat: 69%;
   --white: hsl(0, 0%, 100%);
-  --purple-primary: rgba(132, 0, 255, 1);
-  --purple-glow: rgba(132, 0, 255, 0.2);
-  --purple-border: rgba(132, 0, 255, 0.8);
-  --border-color: #392e4e;
-  --background-dark: #060010;
-  color-scheme: light dark;
+  --fire-primary: rgba(249, 115, 22, 1);
+  --fire-glow: rgba(249, 115, 22, 0.2);
+  --fire-border: rgba(249, 115, 22, 0.8);
+  --border-color: rgba(249, 115, 22, 0.15);
+  --background-dark: #0a0500;
+  color-scheme: dark;
 }
 
 .card-grid {
@@ -43,7 +43,7 @@
 
 .magic-bento-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 25px rgba(249, 115, 22, 0.1);
 }
 
 .magic-bento-card__header,
@@ -143,7 +143,7 @@
   }
 }
 
-/* Border glow effect */
+/* Border glow effect - fire orange */
 .magic-bento-card--border-glow::after {
   content: '';
   position: absolute;
@@ -151,8 +151,8 @@
   padding: 6px;
   background: radial-gradient(
     var(--glow-radius) circle at var(--glow-x) var(--glow-y),
-    rgba(132, 0, 255, calc(var(--glow-intensity) * 0.8)) 0%,
-    rgba(132, 0, 255, calc(var(--glow-intensity) * 0.4)) 30%,
+    rgba(249, 115, 22, calc(var(--glow-intensity) * 0.8)) 0%,
+    rgba(220, 38, 38, calc(var(--glow-intensity) * 0.4)) 30%,
     transparent 60%
   );
   border-radius: inherit;
@@ -176,8 +176,8 @@
 
 .magic-bento-card--border-glow:hover {
   box-shadow:
-    0 4px 20px rgba(46, 24, 78, 0.4),
-    0 0 30px var(--purple-glow);
+    0 4px 20px rgba(249, 115, 22, 0.2),
+    0 0 30px var(--fire-glow);
 }
 
 .particle-container {
@@ -192,15 +192,15 @@
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: rgba(132, 0, 255, 0.2);
+  background: rgba(249, 115, 22, 0.2);
   border-radius: 50%;
   z-index: -1;
 }
 
 .particle-container:hover {
   box-shadow:
-    0 4px 20px rgba(46, 24, 78, 0.2),
-    0 0 30px var(--purple-glow);
+    0 4px 20px rgba(249, 115, 22, 0.15),
+    0 0 30px var(--fire-glow);
 }
 
 /* Global spotlight styles */

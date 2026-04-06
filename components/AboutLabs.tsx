@@ -1,40 +1,93 @@
 'use client';
 
-import ScrollFloat from './ui/ScrollFloat';
+const steps = [
+  { n: '01', title: 'Ideias',      body: 'Tudo começa com uma pergunta genuína ou uma dor que precisa ser resolvida.' },
+  { n: '02', title: 'Protótipos', body: 'Transformamos perguntas em código. Rápido, imperfeito, funcional.' },
+  { n: '03', title: 'Aprendizado', body: 'Cada projeto — lançado ou não — deixa uma lição. É o combustível do próximo.' },
+];
+
+const principles = [
+  'Curiosidade antes de tudo',
+  'Simplicidade acima de complexidade',
+  'Aprender fazendo',
+  'Evoluir um pouco todo dia',
+];
 
 export default function AboutLabs() {
   return (
-    <section id="about-labs" className="py-32 px-4 md:px-8 min-h-screen flex flex-col justify-center">
-      <div className="container mx-auto max-w-5xl">
-        <ScrollFloat className="text-5xl md:text-7xl font-bold text-center mb-20 text-white tracking-wider">
+    <section id="about-labs" style={{ padding: '120px 32px' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+
+        {/* Label */}
+        <p style={{ fontSize: '12px', letterSpacing: '0.2em', color: '#f97316', marginBottom: '16px', fontWeight: 600 }}>
           SOBRE
-        </ScrollFloat>
+        </p>
+        <div className="fire-line" style={{ marginBottom: '64px' }} />
 
-        <div className="max-w-3xl mx-auto space-y-16 text-center">
-          <p className="text-2xl md:text-3xl text-gray-300 leading-relaxed font-light">
-            A Kurupira Labs surgiu do interesse genuíno por tecnologia.
-            De desmontar, testar, errar e tentar de novo.
-          </p>
+        {/* Intro */}
+        <p
+          style={{
+            fontSize: 'clamp(24px, 3.5vw, 38px)',
+            fontWeight: 300,
+            color: 'rgba(245,245,245,0.9)',
+            lineHeight: 1.5,
+            maxWidth: '640px',
+            marginBottom: '80px',
+          }}
+        >
+          A Kurupira Labs surgiu do{' '}
+          <em style={{ fontStyle: 'normal', color: '#f97316', fontWeight: 500 }}>interesse genuíno</em>{' '}
+          por tecnologia. De desmontar, errar e tentar de novo.
+        </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 bg-black/30 backdrop-blur-sm border border-gray-800 rounded-lg hover:border-red-900/50 transition-all">
-              <p className="text-xl text-gray-300">Ideias viram<br /><span className="text-2xl font-semibold text-white">protótipos</span></p>
+        {/* Steps row */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', marginBottom: '80px' }} className="steps-grid">
+          {steps.map(({ n, title, body }) => (
+            <div
+              key={n}
+              style={{
+                padding: '40px 32px',
+                borderTop: '1px solid rgba(255,255,255,0.07)',
+              }}
+            >
+              <span style={{ fontSize: '11px', letterSpacing: '0.15em', color: 'rgba(249,115,22,0.5)', display: 'block', marginBottom: '20px' }}>
+                {n}
+              </span>
+              <h3 style={{ fontSize: '18px', fontWeight: 600, color: '#f5f5f5', marginBottom: '12px' }}>{title}</h3>
+              <p style={{ fontSize: '14px', color: 'rgba(245,245,245,0.4)', lineHeight: 1.7 }}>{body}</p>
             </div>
-            <div className="p-8 bg-black/30 backdrop-blur-sm border border-gray-800 rounded-lg hover:border-red-900/50 transition-all">
-              <p className="text-xl text-gray-300">Protótipos viram<br /><span className="text-2xl font-semibold text-white">projetos</span></p>
-            </div>
-            <div className="p-8 bg-black/30 backdrop-blur-sm border border-gray-800 rounded-lg hover:border-red-900/50 transition-all">
-              <p className="text-xl text-gray-300">Projetos viram<br /><span className="text-2xl font-semibold text-white">aprendizado</span></p>
-            </div>
-          </div>
+          ))}
+        </div>
 
-          <div className="pt-8 border-t border-gray-800">
-            <p className="text-2xl md:text-3xl text-gray-400 font-light">
-              Sem pressa. Sem fórmula.
-            </p>
-          </div>
+        {/* Principles */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0', borderTop: '1px solid rgba(255,255,255,0.07)' }} className="principles-grid">
+          {principles.map((p, i) => (
+            <div
+              key={i}
+              style={{
+                padding: '24px 0',
+                borderBottom: '1px solid rgba(255,255,255,0.05)',
+                paddingRight: i % 2 === 0 ? '40px' : '0',
+                paddingLeft: i % 2 === 1 ? '40px' : '0',
+                borderLeft: i % 2 === 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '14px',
+              }}
+            >
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#f97316', flexShrink: 0, opacity: 0.7 }} />
+              <span style={{ fontSize: '14px', color: 'rgba(245,245,245,0.5)', fontWeight: 400 }}>{p}</span>
+            </div>
+          ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .steps-grid      { grid-template-columns: 1fr !important; }
+          .principles-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   );
 }

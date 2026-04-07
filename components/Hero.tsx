@@ -13,7 +13,22 @@ export default function Hero() {
         position: 'relative',
       }}
     >
-      {/* Single subtle glow – top center only */}
+      {/* Background ambient glow */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '40%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '800px',
+          height: '600px',
+          background: 'radial-gradient(ellipse at center, rgba(249,115,22,0.12) 0%, transparent 70%)',
+          filter: 'blur(60px)',
+          pointerEvents: 'none',
+          zIndex: 0,
+        }}
+      />
+      {/* Top highlight */}
       <div
         style={{
           position: 'absolute',
@@ -26,23 +41,25 @@ export default function Hero() {
         }}
       />
 
-      <div style={{ maxWidth: '900px', width: '100%', textAlign: 'center' }}>
+      <div style={{ maxWidth: '1400px', width: '100%', textAlign: 'center', zIndex: 1, position: 'relative', marginTop: '10vh' }}>
         {/* Title */}
         <h1
           className="anim-fade-up"
           style={{
             fontFamily: 'var(--font-bebas)',
-            fontSize: 'clamp(72px, 12vw, 160px)',
-            lineHeight: 0.9,
-            letterSpacing: '-0.01em',
-            marginBottom: '40px',
-            background: 'linear-gradient(120deg, #fbbf24 0%, #f97316 50%, #dc2626 100%)',
+            fontSize: 'clamp(56px, 14vw, 220px)',
+            lineHeight: 1,
+            letterSpacing: '0.02em',
+            marginBottom: '32px',
+            background: 'linear-gradient(120deg, #fcd34d 0%, #f97316 40%, #dc2626 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
+            filter: 'drop-shadow(0px 12px 24px rgba(249,115,22,0.2))',
+            whiteSpace: 'nowrap',
           }}
         >
-          Kurupira<br />Labs
+          KURUPIRA LABS
         </h1>
 
         {/* Subtitle */}
@@ -50,11 +67,11 @@ export default function Hero() {
           className="anim-fade-up"
           style={{
             animationDelay: '0.15s',
-            fontSize: 'clamp(16px, 2vw, 20px)',
-            color: 'rgba(245,245,245,0.45)',
-            maxWidth: '480px',
+            fontSize: 'clamp(18px, 2.5vw, 24px)',
+            color: 'rgba(245,245,245,0.7)',
+            maxWidth: '600px',
             margin: '0 auto 56px',
-            lineHeight: 1.7,
+            lineHeight: 1.6,
             fontWeight: 400,
           }}
         >
@@ -64,45 +81,63 @@ export default function Hero() {
         {/* CTA */}
         <div
           className="anim-fade-up"
-          style={{ animationDelay: '0.28s', display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}
+          style={{ animationDelay: '0.28s', display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}
         >
           <button
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             style={{
-              background: '#f97316',
-              color: '#080808',
+              background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
+              color: '#fff',
               border: 'none',
-              borderRadius: '8px',
-              padding: '14px 32px',
-              fontSize: '13px',
+              borderRadius: '12px',
+              padding: '16px 36px',
+              fontSize: '14px',
               fontWeight: 700,
-              letterSpacing: '0.08em',
+              letterSpacing: '0.05em',
               cursor: 'pointer',
-              transition: 'opacity 0.2s, transform 0.2s',
+              boxShadow: '0 8px 20px -6px rgba(249,115,22,0.6)',
+              transition: 'all 0.3s ease',
             }}
-            onMouseEnter={e => { e.currentTarget.style.opacity = '0.85'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-            onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)'; }}
+            onMouseEnter={e => { 
+                e.currentTarget.style.transform = 'translateY(-2px)'; 
+                e.currentTarget.style.boxShadow = '0 12px 24px -6px rgba(249,115,22,0.8)';
+            }}
+            onMouseLeave={e => { 
+                e.currentTarget.style.transform = 'translateY(0)'; 
+                e.currentTarget.style.boxShadow = '0 8px 20px -6px rgba(249,115,22,0.6)';
+            }}
           >
             VER PROJETOS
           </button>
           <button
             onClick={() => document.getElementById('about-labs')?.scrollIntoView({ behavior: 'smooth' })}
             style={{
-              background: 'transparent',
-              color: 'rgba(245,245,245,0.5)',
-              border: '1px solid rgba(255,255,255,0.12)',
-              borderRadius: '8px',
-              padding: '14px 32px',
-              fontSize: '13px',
+              background: 'rgba(255,255,255,0.03)',
+              color: 'rgba(245,245,245,0.8)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: '12px',
+              padding: '16px 36px',
+              fontSize: '14px',
               fontWeight: 600,
-              letterSpacing: '0.08em',
+              letterSpacing: '0.05em',
               cursor: 'pointer',
-              transition: 'border-color 0.2s, color 0.2s, transform 0.2s',
+              transition: 'all 0.3s ease',
+              backdropFilter: 'blur(10px)',
             }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(249,115,22,0.4)'; e.currentTarget.style.color = '#f5f5f5'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.color = 'rgba(245,245,245,0.5)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+            onMouseEnter={e => { 
+                e.currentTarget.style.borderColor = 'rgba(249,115,22,0.5)'; 
+                e.currentTarget.style.color = '#fff'; 
+                e.currentTarget.style.transform = 'translateY(-2px)'; 
+                e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
+            }}
+            onMouseLeave={e => { 
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; 
+                e.currentTarget.style.color = 'rgba(245,245,245,0.8)'; 
+                e.currentTarget.style.transform = 'translateY(0)'; 
+                e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
+            }}
           >
-            SOBRE
+            SOBRE O LABS
           </button>
         </div>
 

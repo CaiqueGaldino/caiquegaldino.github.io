@@ -7,7 +7,6 @@ import AppStoreButton from './ui/AppStoreButton';
 import { getAssetPath } from '@/lib/assetPrefix';
 
 // ── Farol Capital icon cycle ──────────────────────────────────────
-const appIcons = [DollarSign, Wallet, BarChart3, PieChart, TrendingUp];
 
 const phoneImages = [
   '/images/tela-farol-capital-1.jpeg',
@@ -130,16 +129,10 @@ function Tag({ label }: { label: string }) {
 }
 
 export default function Projects() {
-  const [iconIdx, setIconIdx]   = useState(0);
   const [leftIdx, setLeftIdx]   = useState(0);
   const [rightIdx, setRightIdx] = useState(1);
   const [fadingL, setFadingL]   = useState(false);
   const [fadingR, setFadingR]   = useState(false);
-
-  useEffect(() => {
-    const t = setInterval(() => setIconIdx(p => (p + 1) % appIcons.length), 2000);
-    return () => clearInterval(t);
-  }, []);
 
   useEffect(() => {
     const t = setInterval(() => {
@@ -160,8 +153,6 @@ export default function Projects() {
     return () => clearTimeout(t0);
   }, []);
 
-  const AppIcon = appIcons[iconIdx];
-
   return (
     <section id="projects" style={{ padding: '120px 32px' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
@@ -178,7 +169,7 @@ export default function Projects() {
           <div>
             <div style={{ display: 'flex', gap: '8px', marginBottom: '24px', flexWrap: 'wrap' }}>
               <Tag label="APP MOBILE" />
-              <Tag label="iOS & ANDROID" />
+              <Tag label="ANDROID" />
               <Tag label="FINANÇAS" />
             </div>
 
@@ -205,8 +196,7 @@ export default function Projects() {
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '260px' }}>
-              <AppStoreButton variant="google" href="https://play.google.com/store" />
-              <AppStoreButton variant="apple"  href="https://apps.apple.com" />
+              <AppStoreButton variant="google" href="https://play.google.com/store/apps/details?id=com.kurupiralabs.farol_capital" />
             </div>
           </div>
 
@@ -214,19 +204,6 @@ export default function Projects() {
           <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', alignItems: 'flex-start', position: 'relative' }}>
             <Phone src={getAssetPath(phoneImages[leftIdx])} fading={fadingL} />
             <Phone src={getAssetPath(phoneImages[rightIdx])} fading={fadingR} offset={28} />
-            {/* Icon badge over phones */}
-            <div
-              style={{
-                position: 'absolute', bottom: '-12px', left: '50%', transform: 'translateX(-50%)',
-                width: '40px', height: '40px', borderRadius: '10px',
-                background: 'linear-gradient(135deg, #059669, #22c55e)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                boxShadow: '0 4px 16px rgba(34,197,94,0.25)',
-                zIndex: 10,
-              }}
-            >
-              <AppIcon size={18} color="#fff" strokeWidth={1.5} style={{ transition: 'all 0.4s' }} />
-            </div>
           </div>
         </div>
 

@@ -21,11 +21,16 @@ export default function AppStoreButton({
       className={`inline-flex items-center gap-3 px-6 py-3 bg-black hover:bg-zinc-900 border border-gray-700 rounded-lg transition-colors ${className}`}
     >
       {isGoogle ? (
-        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-          <path d="M3.609 4.545A10.939 10.939 0 012.25 10c0 2.008.542 3.89 1.487 5.51l4.49-4.49v-.56l-4.618-5.915z" fill="#EA4335"/>
-          <path d="M12 2.25c2.428 0 4.639.888 6.345 2.355L15.57 7.38A6.735 6.735 0 0012 6.25c-2.38 0-4.442 1.265-5.583 3.15L2.25 10c.92-3.92 4.384-6.75 9.75-6.75z" fill="#4285F4"/>
-          <path d="M12 17.75c-2.38 0-4.442-1.265-5.583-3.15L2.25 14c.92 3.92 4.384 6.75 9.75 6.75 2.428 0 4.639-.888 6.345-2.355L15.57 15.62a6.735 6.735 0 01-3.57.98v-.85z" fill="#34A853"/>
-          <path d="M21.75 10c0 .607-.054 1.2-.155 1.775h-9.345v-3.55h5.595a4.78 4.78 0 01-2.07 3.14l3.12 2.485c1.82-1.68 2.855-4.155 2.855-7.1 0-.643-.055-1.265-.155-1.87L18.345 7.38c.36.82.555 1.73.555 2.62z" fill="#FBBC04"/>
+        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.2 11.1L2.4 0.3C1.9 0 1.25.1 1.25.85V23.2C1.25 24 1.9 24.1 2.4 23.8L22.2 13C22.8 12.6 22.8 11.4 22.2 11.1Z" fill="url(#playGrad)" />
+          <defs>
+            <linearGradient id="playGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#4EE3A5" />
+              <stop offset="30%" stopColor="#25A5D8" />
+              <stop offset="70%" stopColor="#E21B43" />
+              <stop offset="100%" stopColor="#FBCD29" />
+            </linearGradient>
+          </defs>
         </svg>
       ) : (
         <svg className="w-6 h-6" viewBox="0 0 24 24" fill="white">
@@ -34,7 +39,7 @@ export default function AppStoreButton({
       )}
       <div className="flex flex-col items-start">
         <span className="text-xs text-gray-400">
-          {isGoogle ? 'GET IT ON' : 'Download on the'}
+          {isGoogle ? 'DISPONÍVEL NO' : 'Download on the'}
         </span>
         <span className="text-sm font-semibold text-white">
           {isGoogle ? 'Google Play' : 'App Store'}

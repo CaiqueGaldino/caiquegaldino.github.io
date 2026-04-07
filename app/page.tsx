@@ -6,6 +6,7 @@ import Projects from '@/components/Projects';
 import AboutLabs from '@/components/AboutLabs';
 import Closing from '@/components/Closing';
 import Footer from '@/components/Footer';
+import BetaTestersCard from '@/components/BetaTestersCard';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Projects />
       <AboutLabs />
       <Closing />
+      <BetaTestersCard />
       <Footer />
     </div>
   );

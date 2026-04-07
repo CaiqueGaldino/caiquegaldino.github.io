@@ -1,19 +1,28 @@
 'use client';
 
-import { Wallet, DollarSign, BarChart3, PieChart, TrendingUp, Globe, Dumbbell, Users, Star, BrainCircuit, Calendar, BookOpen, Clock } from 'lucide-react';
+import { Wallet, DollarSign, BarChart3, PieChart, TrendingUp, Globe, Dumbbell, Users, Star, BrainCircuit, Calendar, BookOpen, Clock, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import AppStoreButton from './ui/AppStoreButton';
 import { getAssetPath } from '@/lib/assetPrefix';
 
-// ── Farol Capital icon cycle ──────────────────────────────────────
+// ── App Mockup Images ──────────────────────────────────────────────
 
-const phoneImages = [
+const farolPhoneImages = [
   '/images/tela-farol-capital-1.jpeg',
   '/images/tela-farol-capital-2.jpeg',
   '/images/tela-farol-capital-3.jpeg',
   '/images/tela-farol-capital-4.jpeg',
   '/images/tela-farol-capital-5.jpeg',
+];
+
+const oasisPhoneImages = [
+  '/images/oasis1.png',
+  '/images/oasis2.png',
+  '/images/oasis3.png',
+  '/images/oasis4.png',
+  '/images/oasis5.png',
 ];
 
 // ── Browser Mockup for website projects ──────────────────────────
@@ -137,7 +146,7 @@ export default function Projects() {
   useEffect(() => {
     const t = setInterval(() => {
       setFadingL(true);
-      setTimeout(() => { setLeftIdx(p => (p + 2) % phoneImages.length); setFadingL(false); }, 350);
+      setTimeout(() => { setLeftIdx(p => (p + 2) % 5); setFadingL(false); }, 350);
     }, 5000);
     return () => clearInterval(t);
   }, []);
@@ -146,7 +155,7 @@ export default function Projects() {
     const t0 = setTimeout(() => {
       const t = setInterval(() => {
         setFadingR(true);
-        setTimeout(() => { setRightIdx(p => (p + 2) % phoneImages.length); setFadingR(false); }, 350);
+        setTimeout(() => { setRightIdx(p => (p + 2) % 5); setFadingR(false); }, 350);
       }, 5000);
       return () => clearInterval(t);
     }, 2500);
@@ -197,13 +206,36 @@ export default function Projects() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '260px' }}>
               <AppStoreButton variant="google" href="https://play.google.com/store/apps/details?id=com.kurupiralabs.farol_capital" />
+              <Link
+                href="/farolcapital"
+                style={{
+                  display: 'inline-flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: '12px',
+                  padding: '12px 20px',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  letterSpacing: '0.06em',
+                  color: 'rgba(245,245,245,0.6)',
+                  textDecoration: 'none',
+                  transition: 'border-color 0.2s, color 0.2s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.4)'; e.currentTarget.style.color = '#f5f5f5'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(245,245,245,0.6)'; }}
+              >
+                MAIS DETALHES <ArrowRight size={14} />
+              </Link>
             </div>
           </div>
 
           {/* Right: phones */}
           <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', alignItems: 'flex-start', position: 'relative' }}>
-            <Phone src={getAssetPath(phoneImages[leftIdx])} fading={fadingL} />
-            <Phone src={getAssetPath(phoneImages[rightIdx])} fading={fadingR} offset={28} />
+            <Phone src={getAssetPath(farolPhoneImages[leftIdx])} fading={fadingL} />
+            <Phone src={getAssetPath(farolPhoneImages[rightIdx])} fading={fadingR} offset={28} />
           </div>
         </div>
 
@@ -378,6 +410,82 @@ export default function Projects() {
           <BrowserMockup src={getAssetPath('/images/bia-psi-hero.png')} alt="Bia Psi" url="caiquegaldino.github.io/bia-psi" />
         </div>
 
+        <SectionDivider />
+
+        {/* ── PROJECT 4: Oasis ── */}
+        <div className="project-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
+          
+          {/* Left: phones */}
+          <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', alignItems: 'flex-start', position: 'relative' }} className="reverse-phones">
+            <Phone src={getAssetPath(oasisPhoneImages[leftIdx])} fading={fadingL} />
+            <Phone src={getAssetPath(oasisPhoneImages[rightIdx])} fading={fadingR} offset={28} />
+          </div>
+
+          {/* Right: info */}
+          <div>
+            <div style={{ display: 'flex', gap: '8px', marginBottom: '24px', flexWrap: 'wrap', alignItems: 'center' }}>
+              <Tag label="APP MOBILE" />
+              <Tag label="ANDROID" />
+              <Tag label="SAÚDE" />
+              {/* Em testes badge */}
+              <span style={{
+                fontSize: '10px', letterSpacing: '0.1em', fontWeight: 700,
+                color: '#3b82f6', background: 'rgba(59,130,246,0.1)',
+                border: '1px solid rgba(59,130,246,0.25)',
+                borderRadius: '4px', padding: '3px 8px',
+              }}>EM FASE DE TESTES</span>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '28px' }}>
+              <div
+                style={{
+                  width: '48px', height: '48px', borderRadius: '14px', overflow: 'hidden', flexShrink: 0, position: 'relative',
+                  background: 'linear-gradient(135deg, #2563eb, #3b82f6)',
+                }}
+              >
+                <Image src={getAssetPath('/images/oasis-icone-semfundo.png')} alt="Oasis" fill style={{ objectFit: 'contain', padding: '6px' }} />
+              </div>
+              <div>
+                <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#f5f5f5', letterSpacing: '0.02em' }}>Oasis</h2>
+                <p style={{ fontSize: '12px', color: 'rgba(245,245,245,0.3)', letterSpacing: '0.08em', marginTop: '2px' }}>HIDRATAÇÃO INTELIGENTE</p>
+              </div>
+            </div>
+
+            <p style={{ fontSize: '15px', color: 'rgba(245,245,245,0.5)', lineHeight: 1.8, marginBottom: '14px' }}>
+              Um aplicativo simples e intuitivo que ajuda você a beber mais água e manter uma hidratação saudável no seu dia a dia.
+            </p>
+            <p style={{ fontSize: '14px', color: 'rgba(245,245,245,0.3)', lineHeight: 1.8, marginBottom: '36px' }}>
+              Metas personalizadas dinâmicas, lembretes amigáveis não invasivos e um visual agradável para acompanhar seu progresso de onde você estiver.
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '260px' }}>
+              <Link
+                href="/oasis"
+                style={{
+                  display: 'inline-flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: '12px',
+                  padding: '12px 20px',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  letterSpacing: '0.06em',
+                  color: 'rgba(245,245,245,0.6)',
+                  textDecoration: 'none',
+                  transition: 'border-color 0.2s, color 0.2s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(59,130,246,0.4)'; e.currentTarget.style.color = '#f5f5f5'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(245,245,245,0.6)'; }}
+              >
+                MAIS DETALHES <ArrowRight size={14} />
+              </Link>
+            </div>
+          </div>
+        </div>
+
         {/* Coming soon */}
         <div
           style={{
@@ -397,6 +505,7 @@ export default function Projects() {
       <style>{`
         @media (max-width: 768px) {
           .project-grid { grid-template-columns: 1fr !important; }
+          .reverse-phones { order: -1; }
         }
       `}</style>
     </section>

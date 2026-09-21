@@ -10,7 +10,7 @@ import BetaTestersCard from '@/components/BetaTestersCard';
 
 export default function Home() {
   return (
-    <div style={{ background: '#080808', minHeight: '100vh' }}>
+    <div className="min-h-screen relative w-full overflow-hidden">
       <Header />
       <Hero />
       <Projects />

@@ -1,166 +1,85 @@
 'use client';
 
-import FlameAvatar from './FlameAvatar';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import FlameIcon from './FlameIcon';
+import { Button } from './ui/button';
+import { Particles } from './ui/particles';
 
 export default function Hero() {
+  const container = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.gsap-hero-item', {
+        y: 40,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 1,
+        ease: 'power3.out',
+        delay: 0.2
+      });
+      gsap.from('.gsap-hero-glow', {
+        scale: 0,
+        opacity: 0,
+        duration: 2,
+        ease: 'power2.out',
+      });
+    }, container);
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
       id="home"
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '0 32px',
-        position: 'relative',
-      }}
+      ref={container}
+      className="relative flex items-center justify-center min-h-screen px-8 overflow-hidden"
     >
-      <div
-        style={{
-          position: 'absolute',
-          top: '40%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '800px',
-          height: '600px',
-          background: 'radial-gradient(ellipse at center, rgba(249,115,22,0.12) 0%, transparent 70%)',
-          filter: 'blur(60px)',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '600px',
-          height: '1px',
-          background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.6), transparent)',
-        }}
+      <Particles
+        className="absolute inset-0 bg-transparent z-0"
+        quantity={120}
+        ease={80}
+        color="#e85d04"
+        refresh
       />
 
-      <div style={{ maxWidth: '1400px', width: '100%', textAlign: 'center', zIndex: 1, position: 'relative', marginTop: '10vh' }}>
-        <div className="anim-fade-up" style={{ display: 'flex', justifyContent: 'center', marginBottom: '28px' }}>
-          <FlameAvatar size={92} />
+      <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/10 rounded-full blur-[80px] pointer-events-none z-0 gsap-hero-glow" />
+
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+
+      <div className="relative z-10 w-full max-w-6xl mx-auto text-center mt-[10vh] flex flex-col items-center">
+        <div className="gsap-hero-item mb-8">
+          <FlameIcon size={96} className="text-primary drop-shadow-2xl" />
         </div>
 
-        <h1
-          className="anim-fade-up"
-          style={{
-            fontFamily: 'var(--font-bebas)',
-            fontSize: 'clamp(56px, 14vw, 220px)',
-            lineHeight: 1,
-            letterSpacing: '0.02em',
-            marginBottom: '32px',
-            background: 'linear-gradient(120deg, #fcd34d 0%, #f97316 40%, #dc2626 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            filter: 'drop-shadow(0px 12px 24px rgba(249,115,22,0.2))',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          KURUPIRA LABS
+        <h1 className="gsap-hero-item text-6xl md:text-[7rem] lg:text-[10rem] font-bold tracking-tighter mb-8 fire-text leading-none uppercase drop-shadow-md">
+          Kurupira Labs
         </h1>
 
-        <p
-          className="anim-fade-up"
-          style={{
-            animationDelay: '0.15s',
-            fontSize: 'clamp(18px, 2.5vw, 24px)',
-            color: 'rgba(245,245,245,0.7)',
-            maxWidth: '600px',
-            margin: '0 auto 56px',
-            lineHeight: 1.6,
-            fontWeight: 400,
-          }}
-        >
+        <p className="gsap-hero-item text-lg md:text-2xl text-foreground/70 max-w-2xl mx-auto mb-14 font-medium leading-relaxed">
           Apps, sites e vontade de transformar ideias em soluções reais.
         </p>
 
-        <div
-          className="anim-fade-up"
-          style={{ animationDelay: '0.28s', display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}
-        >
-          <button
+        <div className="gsap-hero-item flex flex-wrap justify-center gap-4">
+          <Button
+            size="lg"
+            className="rounded-xl px-10 h-14 text-sm font-semibold tracking-wider shadow-[0_8px_20px_-6px_rgba(232,93,4,0.6)] hover:-translate-y-1 hover:shadow-[0_12px_24px_-6px_rgba(232,93,4,0.8)] transition-all bg-gradient-to-br from-primary to-flame-700"
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            style={{
-              background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
-              color: '#fff',
-              border: 'none',
-              borderRadius: '12px',
-              padding: '16px 36px',
-              fontSize: '14px',
-              fontWeight: 700,
-              letterSpacing: '0.05em',
-              cursor: 'pointer',
-              boxShadow: '0 8px 20px -6px rgba(249,115,22,0.6)',
-              transition: 'all 0.3s ease',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 12px 24px -6px rgba(249,115,22,0.8)';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 8px 20px -6px rgba(249,115,22,0.6)';
-            }}
           >
             VER PROJETOS
-          </button>
-          <button
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="rounded-xl px-10 h-14 text-sm font-semibold tracking-wider bg-white/5 border-white/10 hover:bg-white/10 hover:border-primary/50 hover:text-white transition-all backdrop-blur-md"
             onClick={() => document.getElementById('about-labs')?.scrollIntoView({ behavior: 'smooth' })}
-            style={{
-              background: 'rgba(255,255,255,0.03)',
-              color: 'rgba(245,245,245,0.8)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: '12px',
-              padding: '16px 36px',
-              fontSize: '14px',
-              fontWeight: 600,
-              letterSpacing: '0.05em',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              backdropFilter: 'blur(10px)',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.borderColor = 'rgba(249,115,22,0.5)';
-              e.currentTarget.style.color = '#fff';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
-              e.currentTarget.style.color = 'rgba(245,245,245,0.8)';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
-            }}
           >
             SOBRE O LABS
-          </button>
+          </Button>
         </div>
 
-        <div
-          className="anim-fade-in"
-          style={{
-            animationDelay: '1s',
-            marginTop: '80px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '8px',
-          }}
-        >
-          <div
-            style={{
-              width: '1px',
-              height: '40px',
-              background: 'linear-gradient(180deg, rgba(249,115,22,0.6), transparent)',
-            }}
-            className="anim-glow"
-          />
+        <div className="gsap-hero-item mt-24 flex flex-col items-center gap-2">
+          <div className="w-[1px] h-12 bg-gradient-to-b from-primary/60 to-transparent anim-glow" />
         </div>
       </div>
     </section>

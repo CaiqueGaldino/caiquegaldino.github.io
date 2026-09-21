@@ -1,62 +1,29 @@
 'use client';
 
-import FlameAvatar from './FlameAvatar';
+import FlameIcon from './FlameIcon';
 
 export default function Closing() {
   return (
     <section
       id="closing"
-      style={{
-        padding: '160px 32px 120px',
-        textAlign: 'center',
-        borderTop: '1px solid rgba(255,255,255,0.06)',
-        position: 'relative',
-      }}
+      className="py-40 px-8 text-center relative border-t border-white/5"
     >
-      <div
-        style={{
-          position: 'absolute',
-          top: '-1px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '200px',
-          height: '1px',
-          background: 'linear-gradient(90deg, transparent, #f97316, transparent)',
-        }}
-      />
+      <div className="absolute -top-px left-1/2 -translate-x-1/2 w-[200px] h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
 
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '36px' }}>
-        <FlameAvatar size={72} />
+      <div className="flex justify-center mb-10">
+        <FlameIcon size={80} className="text-primary drop-shadow-xl" />
       </div>
 
-      <p
-        style={{
-          fontSize: 'clamp(13px, 1.4vw, 15px)',
-          letterSpacing: '0.15em',
-          color: 'rgba(245,245,245,0.2)',
-          marginBottom: '28px',
-        }}
-      >
-        A KURUPIRA LABS NÃO É SOBRE CHEGAR RÁPIDO.<br />
-        É SOBRE IR COM INTENÇÃO.
+      <p className="text-xs md:text-sm tracking-[0.15em] text-foreground/30 mb-8 uppercase">
+        A Kurupira Labs não é sobre chegar rápido.<br />
+        É sobre ir com intenção.
       </p>
 
-      <div
-        style={{
-          fontFamily: 'var(--font-bebas)',
-          fontSize: 'clamp(56px, 9vw, 120px)',
-          lineHeight: 0.9,
-          background: 'linear-gradient(120deg, #fbbf24 0%, #f97316 50%, #dc2626 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          marginBottom: '32px',
-        }}
-      >
+      <div className="text-5xl md:text-8xl lg:text-[10rem] font-bold tracking-tighter leading-[0.9] fire-text uppercase mb-8 drop-shadow-md">
         Kurupira Labs
       </div>
 
-      <p style={{ fontSize: '13px', color: 'rgba(245,245,245,0.2)', letterSpacing: '0.1em' }}>
+      <p className="text-xs md:text-sm text-foreground/30 tracking-[0.1em] uppercase font-medium">
         Criar por curiosidade · Construir por prazer
       </p>
     </section>

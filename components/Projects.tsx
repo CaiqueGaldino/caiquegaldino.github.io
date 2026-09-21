@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import AppStoreButton from './ui/AppStoreButton';
 import { getAssetPath } from '@/lib/assetPrefix';
+import { Badge } from './ui/badge';
+import { Button } from './ui/button';
 
 // ── App Mockup Images ──────────────────────────────────────────────
 
@@ -119,20 +121,9 @@ function SectionDivider() {
 // ── Project tag chip ──────────────────────────────────────────────
 function Tag({ label }: { label: string }) {
   return (
-    <span
-      style={{
-        fontSize: '11px',
-        letterSpacing: '0.08em',
-        fontWeight: 600,
-        color: 'rgba(245,245,245,0.4)',
-        background: 'rgba(255,255,255,0.05)',
-        border: '1px solid rgba(255,255,255,0.07)',
-        borderRadius: '4px',
-        padding: '3px 8px',
-      }}
-    >
+    <Badge variant="secondary" className="bg-white/5 border-white/10 text-white/50 tracking-widest text-[10px] px-2 py-0.5 hover:bg-white/10 rounded-sm">
       {label}
-    </span>
+    </Badge>
   );
 }
 
@@ -205,29 +196,11 @@ export default function Projects() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '260px' }}>
               <AppStoreButton variant="google" href="https://play.google.com/store/apps/details?id=com.kurupiralabs.farol_capital" />
-              <Link
-                href="/farolcapital"
-                style={{
-                  display: 'inline-flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: '8px',
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  borderRadius: '12px',
-                  padding: '12px 20px',
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  letterSpacing: '0.06em',
-                  color: 'rgba(245,245,245,0.6)',
-                  textDecoration: 'none',
-                  transition: 'border-color 0.2s, color 0.2s',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(2,30,70,0.75)'; e.currentTarget.style.color = '#f5f5f5'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(245,245,245,0.6)'; }}
-              >
-                MAIS DETALHES <ArrowRight size={14} />
-              </Link>
+              <Button asChild variant="outline" className="gap-2 bg-white/5 border-white/10 hover:bg-white/10 hover:border-primary/50 text-foreground/60 hover:text-white transition-all h-12">
+                <Link href="/farolcapital">
+                  MAIS DETALHES <ArrowRight size={14} />
+                </Link>
+              </Button>
             </div>
           </div>
 
@@ -292,31 +265,12 @@ export default function Projects() {
             </div>
 
             {/* CTA */}
-            <a
-              href="https://fitnessexclusive.com.br"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: '8px',
-                padding: '12px 20px',
-                fontSize: '13px',
-                fontWeight: 600,
-                letterSpacing: '0.06em',
-                color: 'rgba(245,245,245,0.6)',
-                textDecoration: 'none',
-                transition: 'border-color 0.2s, color 0.2s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(249,115,22,0.4)'; e.currentTarget.style.color = '#f5f5f5'; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(245,245,245,0.6)'; }}
-            >
-              <Globe size={14} />
-              VER SITE AO VIVO
-            </a>
+            <Button asChild variant="outline" className="gap-2 bg-white/5 border-white/10 hover:bg-white/10 hover:border-primary/50 text-foreground/60 hover:text-white transition-all h-12 inline-flex w-max">
+              <a href="https://fitnessexclusive.com.br" target="_blank" rel="noopener noreferrer">
+                <Globe size={14} />
+                VER SITE AO VIVO
+              </a>
+            </Button>
           </div>
         </div>
 
@@ -378,31 +332,12 @@ export default function Projects() {
             </div>
 
             {/* CTA */}
-            <a
-              href="https://caiquegaldino.github.io/bia-psi/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                borderRadius: '8px',
-                padding: '12px 20px',
-                fontSize: '13px',
-                fontWeight: 600,
-                letterSpacing: '0.06em',
-                color: 'rgba(245,245,245,0.45)',
-                textDecoration: 'none',
-                transition: 'border-color 0.2s, color 0.2s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(249,115,22,0.3)'; e.currentTarget.style.color = '#f5f5f5'; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.color = 'rgba(245,245,245,0.45)'; }}
-            >
-              <Globe size={14} />
-              VER PRÉVIA
-            </a>
+            <Button asChild variant="outline" className="gap-2 bg-white/5 border-white/10 hover:bg-white/10 hover:border-primary/50 text-foreground/60 hover:text-white transition-all h-12 inline-flex w-max">
+              <a href="https://caiquegaldino.github.io/bia-psi/" target="_blank" rel="noopener noreferrer">
+                <Globe size={14} />
+                VER PRÉVIA
+              </a>
+            </Button>
           </div>
 
           {/* Right: browser mockup */}
@@ -458,29 +393,11 @@ export default function Projects() {
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '260px' }}>
-              <Link
-                href="/oasis"
-                style={{
-                  display: 'inline-flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: '8px',
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  borderRadius: '12px',
-                  padding: '12px 20px',
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  letterSpacing: '0.06em',
-                  color: 'rgba(245,245,245,0.6)',
-                  textDecoration: 'none',
-                  transition: 'border-color 0.2s, color 0.2s',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(59,130,246,0.4)'; e.currentTarget.style.color = '#f5f5f5'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(245,245,245,0.6)'; }}
-              >
-                MAIS DETALHES <ArrowRight size={14} />
-              </Link>
+              <Button asChild variant="outline" className="gap-2 bg-white/5 border-white/10 hover:bg-white/10 hover:border-primary/50 text-foreground/60 hover:text-white transition-all h-12">
+                <Link href="/oasis">
+                  MAIS DETALHES <ArrowRight size={14} />
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -522,29 +439,11 @@ export default function Projects() {
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '260px' }}>
-              <Link
-                href="/bomdiamensagens"
-                style={{
-                  display: 'inline-flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: '8px',
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  borderRadius: '12px',
-                  padding: '12px 20px',
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  letterSpacing: '0.06em',
-                  color: 'rgba(245,245,245,0.6)',
-                  textDecoration: 'none',
-                  transition: 'border-color 0.2s, color 0.2s',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(249,115,22,0.4)'; e.currentTarget.style.color = '#f5f5f5'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(245,245,245,0.6)'; }}
-              >
-                MAIS DETALHES <ArrowRight size={14} />
-              </Link>
+              <Button asChild variant="outline" className="gap-2 bg-white/5 border-white/10 hover:bg-white/10 hover:border-primary/50 text-foreground/60 hover:text-white transition-all h-12">
+                <Link href="/bomdiamensagens">
+                  MAIS DETALHES <ArrowRight size={14} />
+                </Link>
+              </Button>
             </div>
           </div>
 
@@ -600,29 +499,11 @@ export default function Projects() {
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '260px' }}>
-              <Link
-                href="/dailytasks"
-                style={{
-                  display: 'inline-flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: '8px',
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  borderRadius: '12px',
-                  padding: '12px 20px',
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  letterSpacing: '0.06em',
-                  color: 'rgba(245,245,245,0.6)',
-                  textDecoration: 'none',
-                  transition: 'border-color 0.2s, color 0.2s',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(99,102,241,0.45)'; e.currentTarget.style.color = '#f5f5f5'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(245,245,245,0.6)'; }}
-              >
-                MAIS DETALHES <ArrowRight size={14} />
-              </Link>
+              <Button asChild variant="outline" className="gap-2 bg-white/5 border-white/10 hover:bg-white/10 hover:border-primary/50 text-foreground/60 hover:text-white transition-all h-12">
+                <Link href="/dailytasks">
+                  MAIS DETALHES <ArrowRight size={14} />
+                </Link>
+              </Button>
             </div>
           </div>
 

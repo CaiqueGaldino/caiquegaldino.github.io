@@ -1,17 +1,10 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Barlow_Condensed } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const bebasNeue = Bebas_Neue({
-  variable: "--font-bebas",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
-  weight: "400",
-});
-
-const barlowCondensed = Barlow_Condensed({
-  variable: "--font-barlow",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -32,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${bebasNeue.variable} ${barlowCondensed.variable} antialiased`}
+        className={`${spaceGrotesk.variable} font-sans antialiased bg-black text-white`}
       >
         {children}
       </body>

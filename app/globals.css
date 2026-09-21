@@ -6,8 +6,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-space-grotesk);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -16,22 +15,34 @@
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
+
+  /* Flame Color Palette */
+  --color-flame-50: #03071e;
+  --color-flame-100: #370617;
+  --color-flame-200: #6a040f;
+  --color-flame-300: #9d0208;
+  --color-flame-400: #d00000;
+  --color-flame-500: #dc2f02;
+  --color-flame-600: #e85d04;
+  --color-flame-700: #f48c06;
+  --color-flame-800: #faa307;
+  --color-flame-900: #ffba08;
 }
 
 :root {
   --radius: 0.75rem;
-  --background: #080808;
+  --background: #03071e; /* Using the darkest color as background for a sleeker look */
   --foreground: #f5f5f5;
   --border: rgba(255,255,255,0.07);
   --input: rgba(255,255,255,0.07);
-  --ring: rgba(249,115,22,0.5);
-  --primary: #f97316;
-  --primary-foreground: #080808;
+  --ring: #e85d04;
+  --primary: #e85d04;
+  --primary-foreground: #03071e;
 
-  /* Fire accent – used SPARINGLY */
-  --fire: #f97316;
-  --fire-muted: rgba(249,115,22,0.12);
-  --fire-border: rgba(249,115,22,0.2);
+  /* Fire accent */
+  --fire: #e85d04;
+  --fire-muted: rgba(232, 93, 4, 0.12);
+  --fire-border: rgba(232, 93, 4, 0.2);
 }
 
 @layer base {
@@ -48,15 +59,15 @@
   body {
     background: var(--background);
     color: var(--foreground);
-    font-family: var(--font-barlow), system-ui, sans-serif;
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
 }
 
-/* ── Fire gradient text (used only for hero title & key accents) ── */
+/* ── Fire gradient text ── */
 .fire-text {
-  background: linear-gradient(120deg, #fbbf24 0%, #f97316 55%, #dc2626 100%);
+  background: linear-gradient(120deg, #ffba08 0%, #e85d04 55%, #d00000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -65,17 +76,17 @@
 /* ── Subtle line ── */
 .fire-line {
   height: 1px;
-  background: linear-gradient(90deg, transparent, #f97316, transparent);
+  background: linear-gradient(90deg, transparent, #e85d04, transparent);
   opacity: 0.4;
 }
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #080808; }
-::-webkit-scrollbar-thumb { background: rgba(249,115,22,0.4); border-radius: 2px; }
+::-webkit-scrollbar-track { background: #03071e; }
+::-webkit-scrollbar-thumb { background: rgba(232, 93, 4, 0.4); border-radius: 2px; }
 
 /* ── Selection ── */
-::selection { background: rgba(249,115,22,0.2); color: #fff; }
+::selection { background: rgba(232, 93, 4, 0.2); color: #fff; }
 
 /* ── Animations ── */
 @keyframes fadeUp {
@@ -122,8 +133,6 @@
 
 .flame-avatar__svg {
   position: relative;
-  width: 100%;
-  height: 100%;
   overflow: visible;
   filter: drop-shadow(0 10px 24px rgba(249,115,22,0.18));
 }

@@ -15,79 +15,48 @@ const principles = [
 
 export default function AboutLabs() {
   return (
-    <section id="about-labs" style={{ padding: '120px 32px' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-
-        {/* Label */}
-        <p style={{ fontSize: '12px', letterSpacing: '0.2em', color: '#f97316', marginBottom: '16px', fontWeight: 600 }}>
+    <section id="about-labs" className="py-32 px-8">
+      <div className="max-w-6xl mx-auto">
+        <p className="text-xs tracking-[0.2em] text-primary font-semibold mb-4">
           SOBRE
         </p>
-        <div className="fire-line" style={{ marginBottom: '64px' }} />
+        <div className="fire-line mb-16" />
 
-        {/* Intro */}
-        <p
-          style={{
-            fontSize: 'clamp(24px, 3.5vw, 38px)',
-            fontWeight: 300,
-            color: 'rgba(245,245,245,0.9)',
-            lineHeight: 1.5,
-            maxWidth: '640px',
-            marginBottom: '80px',
-          }}
-        >
+        <p className="text-2xl md:text-4xl font-light text-foreground/90 leading-relaxed max-w-2xl mb-20">
           A Kurupira Labs surgiu do{' '}
-          <em style={{ fontStyle: 'normal', color: '#f97316', fontWeight: 500 }}>interesse genuíno</em>{' '}
+          <em className="not-italic text-primary font-medium">interesse genuíno</em>{' '}
           por tecnologia. De desmontar, errar e tentar de novo.
         </p>
 
-        {/* Steps row */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', marginBottom: '80px' }} className="steps-grid">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 mb-20 border-y border-white/10">
           {steps.map(({ n, title, body }) => (
             <div
               key={n}
-              style={{
-                padding: '40px 32px',
-                borderTop: '1px solid rgba(255,255,255,0.07)',
-              }}
+              className="bg-background p-10 md:p-12 hover:bg-white/[0.02] transition-colors"
             >
-              <span style={{ fontSize: '11px', letterSpacing: '0.15em', color: 'rgba(249,115,22,0.5)', display: 'block', marginBottom: '20px' }}>
+              <span className="text-xs tracking-[0.15em] text-primary/50 block mb-5">
                 {n}
               </span>
-              <h3 style={{ fontSize: '18px', fontWeight: 600, color: '#f5f5f5', marginBottom: '12px' }}>{title}</h3>
-              <p style={{ fontSize: '14px', color: 'rgba(245,245,245,0.4)', lineHeight: 1.7 }}>{body}</p>
+              <h3 className="text-xl font-semibold text-foreground mb-3">{title}</h3>
+              <p className="text-sm text-foreground/50 leading-relaxed">{body}</p>
             </div>
           ))}
         </div>
 
-        {/* Principles */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0', borderTop: '1px solid rgba(255,255,255,0.07)' }} className="principles-grid">
+        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-white/10">
           {principles.map((p, i) => (
             <div
               key={i}
-              style={{
-                padding: '24px 0',
-                borderBottom: '1px solid rgba(255,255,255,0.05)',
-                paddingRight: i % 2 === 0 ? '40px' : '0',
-                paddingLeft: i % 2 === 1 ? '40px' : '0',
-                borderLeft: i % 2 === 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '14px',
-              }}
+              className={`py-6 flex items-center gap-4 border-b border-white/5 ${
+                i % 2 === 0 ? 'md:pr-10' : 'md:pl-10 md:border-l md:border-white/5'
+              }`}
             >
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#f97316', flexShrink: 0, opacity: 0.7 }} />
-              <span style={{ fontSize: '14px', color: 'rgba(245,245,245,0.5)', fontWeight: 400 }}>{p}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 opacity-70" />
+              <span className="text-sm text-foreground/50">{p}</span>
             </div>
           ))}
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .steps-grid      { grid-template-columns: 1fr !important; }
-          .principles-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   );
 }

@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import FlameAvatar from './FlameAvatar';
+import FlameIcon from './FlameIcon';
+import { Button } from './ui/button';
 
 const links = [
   { label: 'Projetos', id: 'projects' },
@@ -26,91 +27,64 @@ export default function Header() {
 
   return (
     <header
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 50,
-        transition: 'background 0.4s, border-color 0.4s',
-        background: scrolled ? 'rgba(8,8,8,0.85)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
-      }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
+        scrolled 
+          ? 'bg-background/85 backdrop-blur-md border-b border-white/5' 
+          : 'bg-transparent border-b border-transparent'
+      }`}
     >
-      <nav style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <button onClick={() => go('home')} style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'none', border: 'none', cursor: 'pointer' }}>
-          <FlameAvatar size={30} withGlow={false} />
-          <span style={{ fontFamily: 'var(--font-bebas)', fontSize: '18px', letterSpacing: '0.12em', color: '#f5f5f5' }}>
-            KURUPIRA LABS
+      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <button 
+          onClick={() => go('home')} 
+          className="flex items-center gap-3 bg-transparent border-none cursor-pointer group"
+        >
+          <FlameIcon size={32} className="text-primary group-hover:scale-110 transition-transform" />
+          <span className="font-bold text-lg tracking-widest text-foreground uppercase">
+            Kurupira Labs
           </span>
         </button>
 
-        <div style={{ display: 'flex', gap: '40px' }} className="hidden-mobile">
+        <div className="hidden sm:flex gap-8">
           {links.map(({ label, id }) => (
             <button
               key={id}
               onClick={() => go(id)}
-              style={{
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                fontSize: '13px',
-                letterSpacing: '0.1em',
-                fontWeight: 500,
-                color: 'rgba(245,245,245,0.55)',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#f97316')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(245,245,245,0.55)')}
+              className="bg-transparent border-none cursor-pointer text-sm tracking-widest font-medium text-foreground/60 hover:text-primary transition-colors uppercase"
             >
-              {label.toUpperCase()}
+              {label}
             </button>
           ))}
         </div>
 
-        <button
+        <Button
+          variant="ghost"
+          size="icon"
           onClick={() => setOpen(!open)}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#f5f5f5', display: 'none' }}
-          className="show-mobile"
+          className="sm:hidden text-foreground hover:bg-white/10"
           aria-label="Abrir menu"
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+          {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </Button>
       </nav>
 
-      {open && (
-        <div style={{ background: 'rgba(8,8,8,0.97)', borderTop: '1px solid rgba(255,255,255,0.06)', padding: '20px 32px 24px' }}>
+      {/* Mobile Menu */}
+      <div 
+        className={`sm:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          open ? 'max-h-64 opacity-100 border-t border-white/5 bg-background/95 backdrop-blur-md' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="px-6 py-4 flex flex-col gap-2">
           {links.map(({ label, id }) => (
             <button
               key={id}
               onClick={() => go(id)}
-              style={{
-                display: 'block',
-                width: '100%',
-                textAlign: 'left',
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                fontSize: '14px',
-                letterSpacing: '0.1em',
-                fontWeight: 500,
-                color: 'rgba(245,245,245,0.6)',
-                padding: '10px 0',
-              }}
+              className="text-left py-3 text-sm tracking-widest font-medium text-foreground/70 hover:text-primary transition-colors uppercase"
             >
-              {label.toUpperCase()}
+              {label}
             </button>
           ))}
         </div>
-      )}
-
-      <style>{`
-        @media (max-width: 640px) {
-          .hidden-mobile { display: none !important; }
-          .show-mobile   { display: block !important; }
-        }
-      `}</style>
+      </div>
     </header>
   );
 }

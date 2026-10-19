@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { MessageCircleHeart, Sun, CalendarDays, Share2, Download, Star, ArrowRight, ShieldCheck } from 'lucide-react';
+import ProjectBlogSection from '@/components/site/ProjectBlogSection';
 
 export const metadata = {
   title: 'Bom Dia Mensagens | Kurupira Labs',
@@ -117,6 +118,9 @@ export default function BomDiaMensagensPage() {
             ))}
           </div>
         </div>
+
+        {/* Blog & Atualizações */}
+        <ProjectBlogSection projectSlug="bom-dia-mensagens" projectName="Bom Dia Mensagens" />
 
         <div className="flex flex-col items-center border-t border-white/5 pt-12">
           <Link

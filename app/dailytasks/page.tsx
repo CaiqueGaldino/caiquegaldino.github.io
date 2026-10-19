@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { CheckSquare, Briefcase, User, Bell, CalendarDays, BarChart3, ArrowRight, ShieldCheck } from 'lucide-react';
+import ProjectBlogSection from '@/components/site/ProjectBlogSection';
 
 export const metadata = {
   title: 'Daily Tasks | Kurupira Labs',
@@ -136,6 +137,9 @@ export default function DailyTasksPage() {
             Recursos incluídos: 9 temas visuais, funcionamento offline com dados locais, backup e restauração por JSON e suporte a idiomas PT e EN.
           </p>
         </div>
+
+        {/* Blog & Atualizações */}
+        <ProjectBlogSection projectSlug="daily-tasks" projectName="Daily Tasks" />
 
         <div className="flex flex-col items-center border-t border-white/5 pt-12">
           <Link

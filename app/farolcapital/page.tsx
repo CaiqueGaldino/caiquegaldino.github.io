@@ -16,6 +16,7 @@ import {
   TrendingUp,
   WalletCards,
 } from 'lucide-react';
+import ProjectBlogSection from '@/components/site/ProjectBlogSection';
 
 const PLAY_STORE_URL =
   'https://play.google.com/store/apps/details?id=com.kurupiralabs.farol_capital&pcampaignid=web_share';
@@ -225,6 +226,9 @@ export default function FarolCapital() {
               </div>
             ))}
           </div>
+
+          {/* Blog & Atualizações */}
+          <ProjectBlogSection projectSlug="farol-capital" projectName="Farol Capital" />
         </div>
       </section>
 

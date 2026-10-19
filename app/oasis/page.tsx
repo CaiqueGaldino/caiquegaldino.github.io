@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { getAssetPath } from '@/lib/assetPrefix';
 import { Droplets, Settings, CheckCircle2, Bell, Calendar, Activity, ChevronRight, ShieldCheck, Users } from 'lucide-react';
 import BetaTestersCard from '@/components/BetaTestersCard';
+import ProjectBlogSection from '@/components/site/ProjectBlogSection';
 
 export default function OasisApp() {
   return (
@@ -156,6 +157,9 @@ export default function OasisApp() {
             </ul>
           </div>
         </div>
+
+        {/* Blog & Atualizações do Oasis */}
+        <ProjectBlogSection projectSlug="oasis" projectName="Oasis" />
 
         {/* Beta Testers */}
         <div id="testers" style={{ scrollMarginTop: '80px' }}>

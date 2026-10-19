@@ -1,0 +1,25 @@
+# ai-memory configuration marker
+# Docs: https://github.com/akitaonrails/ai-memory/blob/main/docs/marker-file.md
+
+# Workspace name (groups related projects)
+workspace = "personal"
+
+# Canonical project identifier in ai-memory
+project = "caiquegaldino.github.io"
+
+# Ensure all subdirectories and worktrees route to this root project
+project_strategy = "repo-root"
+
+# Inject brief summary of project architecture and recent decisions at session start
+[briefing]
+inject_on_session_start = true
+max_chars = 4000
+
+# Privacy capture exclusions - sensitive paths that will never be logged to memory
+[capture]
+ignore_paths = [
+    ".env*",
+    "**/*.pem",
+    "**/*.key",
+    "credentials.*"
+]

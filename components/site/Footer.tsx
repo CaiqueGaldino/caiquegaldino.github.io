@@ -2,15 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import FlameIcon from '@/components/FlameIcon';
 import { KineticLetters, formatBrasiliaTime } from './effects';
 import { EMAIL, GITHUB, manifesto } from './data';
 
 export default function Footer() {
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState(() => formatBrasiliaTime());
 
   useEffect(() => {
-    setTime(formatBrasiliaTime());
     const interval = setInterval(() => setTime(formatBrasiliaTime()), 15000);
     return () => clearInterval(interval);
   }, []);
@@ -21,18 +19,15 @@ export default function Footer() {
 
   return (
     <footer className="footer" id="contato">
-      {/* Manifesto de Encerramento com FlameIcon */}
+      {/* Manifesto de encerramento */}
       <div className="flex flex-col items-center text-center mb-24 pt-8">
-        <div className="flex justify-center mb-8">
-          <FlameIcon size={72} className="text-[#ff4d15] drop-shadow-[0_10px_30px_rgba(255,77,21,0.3)]" />
-        </div>
-
         <p className="text-xs md:text-sm tracking-[0.16em] text-white/50 mb-6 uppercase max-w-lg leading-relaxed font-mono">
           {manifesto.intention}
         </p>
 
-        <div className="text-5xl md:text-7xl lg:text-9xl font-extrabold tracking-tighter uppercase mb-6 text-white font-sans">
-          Kurupira <span className="text-[#ff4d15]">Labs</span>
+        <div className="footer__brand">
+          <span>Kurupira</span>
+          <small>/ labs</small>
         </div>
 
         <p className="text-xs md:text-sm text-white/40 tracking-[0.12em] uppercase font-mono">

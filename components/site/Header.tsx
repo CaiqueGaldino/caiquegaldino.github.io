@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import FlameIcon from '@/components/FlameIcon';
 import { formatBrasiliaTime } from './effects';
 import { EMAIL } from './data';
 
@@ -17,10 +16,9 @@ const links = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState(() => formatBrasiliaTime());
 
   useEffect(() => {
-    setTime(formatBrasiliaTime());
     const interval = setInterval(() => setTime(formatBrasiliaTime()), 15000);
     return () => clearInterval(interval);
   }, []);
@@ -32,13 +30,9 @@ export default function Header() {
       <header className="header">
         {/* Logo: Kurupira Labs */}
         <Link href="/" className="header__logo" data-cursor="Início">
-          <span className="sr-only">Kurupira Labs, início</span>
-          <div className="flex items-center gap-2.5">
-            <FlameIcon size={26} className="text-[#ff4d15] drop-shadow-md" />
-            <span className="font-extrabold tracking-wider text-white text-lg uppercase font-sans">
-              Kurupira <span className="text-[#ff4d15]">Labs</span>
-            </span>
-          </div>
+          <span className="sr-only">Kurupira, início</span>
+          <span className="header__wordmark">Kurupira</span>
+          <span className="header__descriptor">labs</span>
         </Link>
 
         {/* Status / Local time */}

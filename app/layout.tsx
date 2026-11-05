@@ -16,7 +16,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Kurupira Labs | Aplicativos, sites e ideias reais",
+  title: "Kurupira — produtos digitais independentes",
   description:
     "Desenvolvemos aplicativos, sites e soluções práticas para ideias reais.",
   icons: {

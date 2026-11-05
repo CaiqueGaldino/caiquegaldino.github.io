@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import FlameIcon from '@/components/FlameIcon';
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -47,8 +46,7 @@ export default function Hero() {
       {/* Top Eyebrow */}
       <div className="hero__top eyebrow hero-anim-top">
         <span className="flex items-center gap-2">
-          <FlameIcon size={16} className="text-[#ff4d15]" />
-          <span>Kurupira Labs / 2026</span>
+          <span>Estúdio digital independente</span>
         </span>
         <span style={{ textAlign: 'center' }}>Ideias reais em soluções práticas</span>
         <span>São Paulo, BR</span>
@@ -73,21 +71,9 @@ export default function Hero() {
           </span>
         </span>
 
-        <span className="hero__line hero__line--second">
-          <span className="sr-only">LABS</span>
-          <span aria-hidden="true" className="inline-flex overflow-hidden">
-            {'LABS'.split('').map((ch, i) => (
-              <span
-                key={i}
-                data-char={ch}
-                data-k={420}
-                className="hero-anim-letter kinetic__letter inline-block text-[#ff4d15] hover:text-white transition-colors duration-200 cursor-default select-none font-extrabold"
-                style={{ fontVariationSettings: '"wdth" 72, "wght" 800' }}
-              >
-                {ch}
-              </span>
-            ))}
-          </span>
+        <span className="hero__labs hero-anim-bottom" aria-label="Labs">
+          <span aria-hidden="true">/ labs</span>
+          <i aria-hidden="true" />
         </span>
       </h1>
 
@@ -116,7 +102,7 @@ export default function Hero() {
             data-magnet
             data-cursor="Sobre"
           >
-            SOBRE O LABS
+            SOBRE NÓS
           </a>
         </div>
       </div>

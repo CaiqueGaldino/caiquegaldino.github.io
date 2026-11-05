@@ -4,7 +4,6 @@ import Header from '@/components/site/Header';
 import Hero from '@/components/site/Hero';
 import Marquee from '@/components/site/Marquee';
 import SelectedWork from '@/components/site/SelectedWork';
-import UpClose from '@/components/site/UpClose';
 import Statement from '@/components/site/Statement';
 import ServiceTiles from '@/components/site/ServiceTiles';
 import Process from '@/components/site/Process';
@@ -28,7 +27,6 @@ export default function Home() {
         <Hero />
         <Marquee />
         <SelectedWork />
-        <UpClose />
         <Statement />
         <ServiceTiles />
         <Process />

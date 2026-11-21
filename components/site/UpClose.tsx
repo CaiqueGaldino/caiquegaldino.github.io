@@ -85,7 +85,7 @@ export default function UpClose() {
                         alt={item.name}
                         fill
                         sizes="(max-width: 768px) 80vw, 600px"
-                        style={{ objectFit: 'cover', objectPosition: item.position || 'center' }}
+                        style={{ objectFit: 'contain', objectPosition: item.position || 'center' }}
                       />
                     </div>
                   )}

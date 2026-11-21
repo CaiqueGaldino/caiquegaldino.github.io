@@ -15,9 +15,24 @@ function ProjectArtwork({ project, index }: { project: Project; index: number })
   const Icon = project.icon;
   const cover = project.images?.[0];
   return (
-    <div className={`project-art project-art--${(index % 4) + 1}`} aria-hidden="true">
-      {cover ? <img className="project-art__image" src={cover} alt="" /> : null}
-      <span className="project-art__shade" />
+    <div className={`project-art project-art--${(index % 4) + 1} project-art--${project.type}`} aria-hidden="true">
+      {cover && project.type === 'phones' ? (
+        <div className="project-art__phones">
+          {project.images?.slice(0, 2).map((src) => (
+            <div className="project-art__phone" key={src}>
+              <span />
+              <img src={src} alt="" />
+            </div>
+          ))}
+        </div>
+      ) : null}
+      {cover && project.type === 'browser' ? (
+        <div className="project-art__browser">
+          <div><i /><i /><i /></div>
+          <img src={cover} alt="" />
+        </div>
+      ) : null}
+      {cover ? <span className="project-art__shade" /> : null}
       <span className="project-art__index">K/{project.num}</span>
       <div className="project-art__path"><span /><span /><span /></div>
       <div className="project-art__window">
@@ -50,7 +65,7 @@ export default function SelectedWork() {
 
       <div className="projects-grid">
         {projects.map((project, index) => (
-          <article className={`project-card ${index === 0 ? 'project-card--featured' : ''}`} key={project.slug} data-reveal>
+          <article className={`project-card project-card--${project.type} ${index === 0 ? 'project-card--featured' : ''}`} key={project.slug} data-reveal>
             <ProjectLink project={project} className="project-card__visual">
               <ProjectArtwork project={project} index={index} />
               <span className="project-card__open">Abrir projeto <ArrowUpRight size={17} aria-hidden="true" /></span>

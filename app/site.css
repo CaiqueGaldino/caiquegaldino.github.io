@@ -653,6 +653,10 @@ body[data-nocursor] .cursor-ring { display: flex; }
 }
 .project-card { min-width: 0; }
 .project-card--featured { grid-column: 1 / -1; }
+.project-card--phones { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(360px, .95fr) minmax(320px, 1.05fr); align-items: center; gap: clamp(34px, 6vw, 100px); }
+.project-card--phones .project-card__visual,
+.project-card--phones.project-card--featured .project-card__visual { aspect-ratio: 16 / 11; }
+.project-card--phones .project-card__content { padding-top: 0; }
 .project-card__visual {
   position: relative;
   display: block;
@@ -696,23 +700,27 @@ body[data-nocursor] .cursor-ring { display: flex; }
   color: #090d14;
   transition: transform .65s var(--ease-out);
 }
-.project-art__image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-}
+.project-art__phones { position: absolute; z-index: 1; inset: 6%; display: flex; align-items: center; justify-content: center; gap: clamp(12px, 3vw, 34px); }
+.project-art__phone { position: relative; height: 100%; width: auto; aspect-ratio: 9 / 19.5; padding: 8px; border: 1px solid rgba(255,255,255,.2); border-radius: 30px; background: #090b11; box-shadow: 0 22px 70px rgba(0,0,0,.42); }
+.project-art__phone > span { position: absolute; z-index: 2; top: 13px; left: 50%; width: 28%; height: 4px; border-radius: 99px; background: #07080b; transform: translateX(-50%); }
+.project-art__phone img { display: block; width: 100%; height: 100%; border-radius: 23px; object-fit: contain; }
+.project-art__browser { position: absolute; z-index: 1; inset: 8%; overflow: hidden; border: 1px solid rgba(255,255,255,.18); border-radius: 12px; background: #11141b; box-shadow: 0 22px 70px rgba(0,0,0,.34); }
+.project-art__browser > div { display: flex; align-items: center; gap: 5px; height: 28px; padding: 0 11px; background: #1a1d25; }
+.project-art__browser i { width: 6px; height: 6px; border-radius: 50%; background: #656a76; }
+.project-art__browser img { display: block; width: 100%; height: calc(100% - 28px); object-fit: contain; object-position: center; background: #0b0d12; }
 .project-art__shade {
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, rgba(7, 9, 19, .08), rgba(7, 9, 19, .62));
 }
-.project-art:has(.project-art__image) .project-art__window,
-.project-art:has(.project-art__image) .project-art__path { display: none; }
-.project-art:has(.project-art__image) .project-art__index,
-.project-art:has(.project-art__image) .project-art__stamp { color: #fff; }
+.project-art--phones .project-art__window,
+.project-art--phones .project-art__path,
+.project-art--browser .project-art__window,
+.project-art--browser .project-art__path { display: none; }
+.project-art--phones .project-art__index,
+.project-art--phones .project-art__stamp,
+.project-art--browser .project-art__index,
+.project-art--browser .project-art__stamp { color: #fff; }
 .project-art--2 { background: #7f73ff; color: #f4f0e8; }
 .project-art--3 { background: #ff7447; color: #131115; }
 .project-art--4 { background: #e8e5dc; color: #111827; }
@@ -829,6 +837,8 @@ body[data-nocursor] .cursor-ring { display: flex; }
   .work__intro-grid { grid-template-columns: 1fr; gap: 28px; }
   .projects-grid { grid-template-columns: minmax(0, 1fr); }
   .project-card--featured { grid-column: auto; }
+  .project-card--phones { grid-column: auto; grid-template-columns: 1fr; gap: 24px; }
+  .project-card--phones .project-card__content { padding-top: 0; }
   .project-card--featured .project-card__visual { aspect-ratio: 4 / 3; }
   .project-card__open { opacity: 1; transform: none; }
 }
@@ -863,11 +873,25 @@ body[data-nocursor] .cursor-ring { display: flex; }
 .project-detail__lead { margin: 0; font-size: clamp(19px, 2vw, 28px); line-height: 1.35; color: var(--muted); text-wrap: balance; }
 .project-detail__meta { justify-content: flex-start; flex-wrap: wrap; padding-top: 18px; border-top: 1px solid var(--hairline); font: 500 11px/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--label); }
 .project-detail__meta span:not(:last-child)::after { content: '·'; margin-left: 20px; color: var(--accent); }
-.project-detail__gallery { display: flex; gap: clamp(16px, 2vw, 30px); align-items: flex-start; overflow-x: auto; padding: clamp(28px, 4vw, 60px) var(--gutter) clamp(70px, 10vw, 140px); scrollbar-color: var(--accent) transparent; }
-.project-detail__shot { flex: 0 0 min(76vw, 860px); margin: 0; overflow: hidden; border: 1px solid var(--hairline); border-radius: 10px; background: var(--surface); }
-.project-detail__gallery--phones .project-detail__shot { flex-basis: min(72vw, 390px); }
-.project-detail__shot img { display: block; width: 100%; height: auto; max-height: 78vh; object-fit: cover; object-position: top center; }
-.project-detail__gallery--phones .project-detail__shot img { object-fit: contain; }
+.project-detail__gallery { padding: clamp(28px, 4vw, 60px) var(--gutter) clamp(70px, 10vw, 140px); }
+.project-detail__shot { min-width: 0; margin: 0; }
+.project-detail__gallery--browser { display: grid; gap: clamp(40px, 7vw, 100px); }
+.project-detail__shot--browser { width: 100%; max-width: 1440px; margin-inline: auto; }
+.project-detail__browser { overflow: hidden; border: 1px solid rgba(255,255,255,.13); border-radius: clamp(10px, 1.4vw, 18px); background: #11131a; box-shadow: 0 30px 90px rgba(0,0,0,.28); }
+.project-detail__browser-bar { position: relative; display: flex; align-items: center; gap: 7px; height: clamp(38px, 4vw, 52px); padding: 0 18px; border-bottom: 1px solid rgba(255,255,255,.09); background: #181b23; }
+.project-detail__browser-bar span { width: 9px; height: 9px; border-radius: 50%; background: #515662; }
+.project-detail__browser-bar span:first-child { background: #ff6b62; }
+.project-detail__browser-bar span:nth-child(2) { background: #f5bf4f; }
+.project-detail__browser-bar span:nth-child(3) { background: #61c554; }
+.project-detail__browser-bar p { position: absolute; left: 50%; max-width: 52%; margin: 0; overflow: hidden; color: #8f95a3; font: 500 10px/1 var(--font-mono); text-overflow: ellipsis; white-space: nowrap; transform: translateX(-50%); }
+.project-detail__browser-viewport { background: #fff; }
+.project-detail__browser-viewport img { display: block; width: 100%; height: auto; object-fit: contain; }
+.project-detail__gallery--phones { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 320px)); justify-content: center; align-items: start; gap: clamp(28px, 4vw, 56px); }
+.project-detail__shot--phones { width: 100%; }
+.project-detail__phone { position: relative; width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,.16); border-radius: 38px; background: linear-gradient(145deg, #242832, #080a0f); box-shadow: 0 28px 70px rgba(0,0,0,.35); }
+.project-detail__phone-speaker { position: absolute; z-index: 2; top: 17px; left: 50%; width: 28%; height: 5px; border-radius: 999px; background: #07080c; transform: translateX(-50%); }
+.project-detail__phone-screen { overflow: hidden; border-radius: 29px; background: #090b10; }
+.project-detail__phone-screen img { display: block; width: 100%; height: auto; object-fit: contain; }
 .project-detail__story { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(48px, 10vw, 160px); padding: clamp(80px, 12vw, 170px) 0; border-top: 1px solid var(--hairline); }
 .project-detail__story h2,
 .project-detail__outcomes h2 { margin: 18px 0 28px; font-size: clamp(38px, 5vw, 72px); line-height: .95; letter-spacing: -.045em; font-variation-settings: "wdth" 82, "wght" 700; }
@@ -887,7 +911,10 @@ body[data-nocursor] .cursor-ring { display: flex; }
   .project-detail__outcomes { grid-template-columns: 1fr; }
   .project-detail__title-grid { align-items: start; }
   .project-detail__title-grid h1 { font-size: clamp(58px, 19vw, 104px); }
-  .project-detail__gallery { padding-right: 20px; }
-  .project-detail__shot { flex-basis: 88vw; }
-  .project-detail__gallery--phones .project-detail__shot { flex-basis: 78vw; }
+  .project-detail__gallery { padding-inline: 20px; }
+  .project-detail__gallery--browser { gap: 32px; }
+  .project-detail__browser-bar p { max-width: 58%; }
+  .project-detail__gallery--phones { display: flex; justify-content: flex-start; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .project-detail__gallery--phones::-webkit-scrollbar { display: none; }
+  .project-detail__shot--phones { flex: 0 0 min(78vw, 320px); scroll-snap-align: center; }
 }

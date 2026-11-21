@@ -56,10 +56,6 @@ export const projects: Project[] = [
       '/images/projects/farol-capital-home-dados.png',
       '/images/projects/farol-capital-transacoes-dados.png',
       '/images/projects/farol-capital-projecao-dados.png',
-      '/images/tela-farol-capital-1.jpeg',
-      '/images/tela-farol-capital-2.jpeg',
-      '/images/tela-farol-capital-3.jpeg',
-      '/images/tela-farol-capital-4.jpeg',
     ],
   },
   {
@@ -86,7 +82,10 @@ export const projects: Project[] = [
     ],
     type: 'browser',
     browserUrl: 'fitnessexclusive.com.br',
-    images: ['/images/fitness-hero.png', '/images/fitness-mid.png'],
+    images: [
+      '/images/projects/fitness-exclusive-hero-desktop-atual.png',
+      '/images/projects/fitness-exclusive-planos-desktop-atual.png',
+    ],
   },
   {
     slug: 'beatriz-silvestre',
@@ -187,7 +186,15 @@ export const projects: Project[] = [
       { icon: Star, title: 'Favoritos e praticidade', text: 'Guarde as suas mensagens preferidas para enviar novamente quando quiser.' },
       { icon: Share2, title: 'Compartilhe no WhatsApp', text: 'Baixe e compartilhe com rapidez, sem complicação.' },
     ],
-    type: 'card',
+    type: 'phones',
+    images: [
+      '/images/projects/bom-dia-mensagens-inicio.png',
+      '/images/projects/bom-dia-mensagens-explorar.png',
+      '/images/projects/bom-dia-mensagens-detalhe.png',
+      '/images/projects/bom-dia-mensagens-favoritos.png',
+      '/images/projects/bom-dia-mensagens-busca.png',
+      '/images/projects/bom-dia-mensagens-ajustes.png',
+    ],
   },
   {
     slug: 'daily-tasks',
@@ -221,13 +228,13 @@ export const projects: Project[] = [
 
 export const upClose = [
   { index: '01', name: 'Farol Capital', label: 'Controle de Gastos', href: '/projetos/farol-capital', src: '/images/projects/farol-capital-home-dados.png', phone: true },
-  { index: '02', name: 'Fitness Exclusive', label: 'Academia & Assinaturas', href: '/projetos/fitness-exclusive', src: '/images/fitness-hero.png', wide: true, position: 'top center' },
+  { index: '02', name: 'Fitness Exclusive', label: 'Academia & Assinaturas', href: '/projetos/fitness-exclusive', src: '/images/projects/fitness-exclusive-hero-desktop-atual.png', wide: true, position: 'top center' },
   { index: '05', name: 'Oasis', label: 'Metas de Hidratação', href: '/projetos/oasis', src: '/images/oasis1.png', phone: true },
   { index: '03', name: 'Beatriz Silvestre', label: 'Psicologia & Agendamento', href: '/projetos/beatriz-silvestre', src: '/images/projects/beatriz-silvestre-desktop-hero.png', wide: true, position: 'top center' },
   { index: '04', name: 'Garcia Fisioterapia', label: 'Saúde & Agendamento', href: '/projetos/garcia-fisioterapia', src: '/images/projects/garcia-fisioterapia-desktop-hero.png', wide: true, position: 'top center' },
   { index: '07', name: 'Daily Tasks', label: 'Rotina & Produtividade', href: '/projetos/daily-tasks', src: '/images/projects/daily-tasks-home-mobile.png', phone: true },
   { index: '05', name: 'Oasis', label: 'Lembretes Amigáveis', href: '/projetos/oasis', src: '/images/oasis4.png', phone: true },
-  { index: '01', name: 'Farol Capital', label: 'Metas e Projeções', href: '/projetos/farol-capital', src: '/images/tela-farol-capital-4.jpeg', phone: true },
+  { index: '01', name: 'Farol Capital', label: 'Metas e Projeções', href: '/projetos/farol-capital', src: '/images/projects/farol-capital-projecao-dados.png', phone: true },
 ];
 
 export const services = [

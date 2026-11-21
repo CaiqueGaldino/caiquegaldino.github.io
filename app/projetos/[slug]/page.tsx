@@ -53,8 +53,27 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {project.images?.length ? (
           <section className={`project-detail__gallery project-detail__gallery--${project.type}`} aria-label={`Telas de ${project.name}`}>
             {project.images.map((src, index) => (
-              <figure key={src} className="project-detail__shot">
-                <img src={src} alt={`Tela ${index + 1} do projeto ${project.name}`} />
+              <figure key={src} className={`project-detail__shot project-detail__shot--${project.type}`}>
+                {project.type === 'browser' ? (
+                  <div className="project-detail__browser">
+                    <div className="project-detail__browser-bar" aria-hidden="true">
+                      <span /><span /><span />
+                      <p>{project.browserUrl}</p>
+                    </div>
+                    <div className="project-detail__browser-viewport">
+                      <img src={src} alt={`Tela desktop ${index + 1} do site ${project.name}`} />
+                    </div>
+                  </div>
+                ) : project.type === 'phones' ? (
+                  <div className="project-detail__phone">
+                    <span className="project-detail__phone-speaker" aria-hidden="true" />
+                    <div className="project-detail__phone-screen">
+                      <img src={src} alt={`Tela mobile ${index + 1} do aplicativo ${project.name}`} />
+                    </div>
+                  </div>
+                ) : (
+                  <img src={src} alt={`Tela ${index + 1} do projeto ${project.name}`} />
+                )}
               </figure>
             ))}
           </section>

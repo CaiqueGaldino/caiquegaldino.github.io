@@ -147,15 +147,3 @@ export function useMagnet() {
   }, []);
 }
 
-/** Relógio de Brasília (HH:MM) para header/rodapé com fallback seguro. */
-export function formatBrasiliaTime(d = new Date()) {
-  try {
-    return new Intl.DateTimeFormat('pt-BR', {
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZone: 'America/Sao_Paulo',
-    }).format(d);
-  } catch {
-    return '12:00';
-  }
-}

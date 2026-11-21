@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { formatBrasiliaTime } from './effects';
 import { EMAIL } from './data';
 
 const links = [
@@ -16,12 +15,6 @@ const links = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [time, setTime] = useState(() => formatBrasiliaTime());
-
-  useEffect(() => {
-    const interval = setInterval(() => setTime(formatBrasiliaTime()), 15000);
-    return () => clearInterval(interval);
-  }, []);
 
   const closeMenu = () => setOpen(false);
 
@@ -35,12 +28,10 @@ export default function Header() {
           <span className="header__descriptor">labs</span>
         </Link>
 
-        {/* Status / Local time */}
+        {/* Studio descriptor */}
         <div className="header__status eyebrow">
           <span className="header__status-dot" aria-hidden="true" />
-          <span>São Paulo, BR</span>
-          <span className="header__status-slash">/</span>
-          <span suppressHydrationWarning>{time || '12:00'}</span>
+          <span>Produtos digitais independentes</span>
         </div>
 
         {/* Desktop links */}
@@ -127,10 +118,7 @@ export default function Header() {
           <a href={`mailto:${EMAIL}`} className="menu__email">
             {EMAIL}
           </a>
-          <span>
-            São Paulo, BR <span style={{ opacity: 0.5 }}>/</span>{' '}
-            <span suppressHydrationWarning>{time || '12:00'}</span>
-          </span>
+          <span>Apps, sites e experiências digitais</span>
         </div>
       </nav>
     </>

@@ -13,8 +13,11 @@ function ProjectLink({ project, className, children }: { project: Project; class
 
 function ProjectArtwork({ project, index }: { project: Project; index: number }) {
   const Icon = project.icon;
+  const cover = project.images?.[0];
   return (
     <div className={`project-art project-art--${(index % 4) + 1}`} aria-hidden="true">
+      {cover ? <img className="project-art__image" src={cover} alt="" /> : null}
+      <span className="project-art__shade" />
       <span className="project-art__index">K/{project.num}</span>
       <div className="project-art__path"><span /><span /><span /></div>
       <div className="project-art__window">

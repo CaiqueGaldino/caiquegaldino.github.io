@@ -49,7 +49,7 @@ export default function Hero() {
           <span>Estúdio digital independente</span>
         </span>
         <span style={{ textAlign: 'center' }}>Ideias reais em soluções práticas</span>
-        <span>São Paulo, BR</span>
+        <span>Produtos digitais independentes</span>
       </div>
 
       {/* Monumental Headline: KURUPIRA LABS */}

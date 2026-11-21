@@ -1,18 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { KineticLetters, formatBrasiliaTime } from './effects';
+import { KineticLetters } from './effects';
 import { EMAIL, GITHUB, manifesto } from './data';
 
 export default function Footer() {
-  const [time, setTime] = useState(() => formatBrasiliaTime());
-
-  useEffect(() => {
-    const interval = setInterval(() => setTime(formatBrasiliaTime()), 15000);
-    return () => clearInterval(interval);
-  }, []);
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -81,9 +73,7 @@ export default function Footer() {
           © {new Date().getFullYear()} Kurupira Labs · Feito com <span className="text-[#ff4d15]">♥</span>
         </span>
 
-        <span suppressHydrationWarning>
-          São Paulo <span style={{ opacity: 0.5 }}>/</span> {time || '12:00'}
-        </span>
+        <span>Apps, sites e produtos digitais independentes</span>
 
         <button
           type="button"
@@ -91,7 +81,7 @@ export default function Footer() {
           className="footer__top"
           data-cursor="Topo"
         >
-          Voltar ao topo ↑
+          Voltar ao topo
         </button>
       </div>
     </footer>
